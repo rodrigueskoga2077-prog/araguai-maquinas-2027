@@ -55,7 +55,7 @@
 
         .hero-overlay {
             position: absolute; inset: 0;
-            background: rgba(17, 17, 17, 0.80);
+            background: transparent;
             z-index: 10;
             pointer-events: none;
         }
@@ -991,7 +991,7 @@
             rafId = requestAnimationFrame(loop);
         }
 
-        window.addEventListener('scroll', () => {
+        function updateScrollFraction() {
             const hero  = document.getElementById('scroll-hero');
             const total = hero.offsetHeight - window.innerHeight;
             targetFraction = Math.max(0, Math.min(1, window.scrollY / (total || 1)));
@@ -1004,7 +1004,10 @@
                 if (window.scrollY > 50) scrollInd.classList.add('hidden');
                 else scrollInd.classList.remove('hidden');
             }
-        }, { passive: true });
+        }
+
+        window.addEventListener('scroll', updateScrollFraction, { passive: true });
+        window.addEventListener('touchmove', updateScrollFraction, { passive: true });
 
         let resizeTimer;
         window.addEventListener('resize', () => {
