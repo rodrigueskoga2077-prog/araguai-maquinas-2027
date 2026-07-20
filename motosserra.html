@@ -143,12 +143,14 @@
         <div class="glass rounded-3xl relative aspect-[4/3] md:aspect-square flex items-center justify-center p-8 overflow-hidden group">
           
           <!-- Brilho interno sutil atrás da motosserra -->
-          <div class="absolute inset-0 bg-gradient-to-tr from-[#FFB800]/5 to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-tr from-[#FFB800]/5 to-transparent pointer-events-none z-0"></div>
 
-          <span class="absolute top-5 left-5 text-[10px] font-bold uppercase tracking-widest bg-[#FFB800] text-[#111] py-1.5 px-3 rounded-md z-10 shadow-lg">Lançamento</span>
-          <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-widest glass text-white py-1.5 px-3 rounded-md z-10">4.9 ★</span>
+          <!-- Modificação do Z-Index de z-10 para z-30 para evitar sobreposição -->
+          <span class="absolute top-5 left-5 text-[10px] font-bold uppercase tracking-widest bg-[#FFB800] text-[#111] py-1.5 px-3 rounded-md z-30 shadow-lg">Lançamento</span>
+          <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-widest glass text-white py-1.5 px-3 rounded-md z-30">4.9 ★</span>
           
-          <img id="mainImage" src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra MS 172" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 z-10 relative">
+          <!-- Adicionado max-w-full max-h-full para forçar limite da imagem dentro do flexbox -->
+          <img id="mainImage" src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra MS 172" class="w-full h-full max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 z-10 relative">
         </div>
         
         <!-- Grid de 3 colunas (Miniaturas de Vidro) -->
