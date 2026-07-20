@@ -818,8 +818,8 @@
 
     <script>
     (() => {
-        const BASE_URL    = 'heroframe/ezgif-frame-';
-        const FRAME_COUNT = 83;
+        const BASE_URL    = '';
+        const FRAME_COUNT = 113;
         const IS_MOBILE   = /iPhone|Android|iPad/i.test(navigator.userAgent) || window.innerWidth <= 1024;
 
         const bitmaps = new Array(FRAME_COUNT);
@@ -1032,7 +1032,7 @@
             async function worker() {
                 while (queue.length) {
                     const i   = queue.shift();
-                    const url = `${BASE_URL}${String(i + 1).padStart(3, '0')}.jpg`;
+                    const url = `${BASE_URL}${String(i + 1).padStart(4, '0')}.webp`;
                     try {
                         const res  = await fetch(url);
                         const blob = await res.blob();
