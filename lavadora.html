@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Roçadeira FS 120 - Araguaia Máquinas</title>
+<title>Lavadora RE 90 PLUS - Araguaia Máquinas</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,9 +22,6 @@
   .brand-yellow { color: #FFB800; }
   .bg-brand-yellow { background: #FFB800; }
 
-  /* =========================================
-     CLASSES GLASSMORPHISM (EFEITO VIDRO)
-     ========================================= */
   .glass {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
@@ -32,81 +29,55 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   }
-  
   .glass:hover {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-
   .glass-highlight {
     background: linear-gradient(135deg, rgba(255, 184, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 184, 0, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(255, 184, 0, 0.1);
   }
-
   .glass-input {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
     color: white;
   }
   .glass-input:focus { border-color: #FFB800; outline: none; }
-
   .glass-nav {
     background: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-
-  /* Botoes */
   .btn-buy { background: linear-gradient(135deg, #FFC933, #CC9200); color: #111; transition: transform .25s ease, box-shadow .25s ease; }
   .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 12px 34px -10px rgba(255, 184, 0, .55); }
-  
-  /* Tabela de Specs no Glass */
   .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .specs-table td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
   .specs-table tr:last-child td { border-bottom: none; }
   .specs-table td:first-child { color: rgba(255, 255, 255, 0.6); font-weight: 300; }
   .specs-table td:last-child { font-weight: 500; text-align: right; color: #F8F8F8; }
-
   .package-list { list-style: none; padding: 0; }
   .package-list li { position: relative; padding-left: 28px; margin-bottom: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.7); font-size: 14px; }
   .package-list li::before { content: "✔"; position: absolute; left: 0; top: 0; font-size: 12px; color: #FFB800; }
-
   .thumb { transition: all .3s ease; cursor: pointer; }
   .thumb.active { border-color: #FFB800; background: rgba(255, 184, 0, 0.1); }
-
   .pulse-dot { animation: pulse 1.6s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 184, 0, .6); } 70% { box-shadow: 0 0 0 8px rgba(255, 184, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0); } }
-
-  .stock-bar-fill { background: linear-gradient(90deg, #FFB800, #FF7A00); }
-
-  .sticky-cta { transform: translateY(120%); transition: transform .35s ease; }
-  .sticky-cta.show { transform: translateY(0); }
-  ::selection { background: #FFB800; color: #111; }
 </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative">
 
-  <!-- LUZES DE FUNDO (BACKGROUND GLOWS) -->
-  <div class="fixed top-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#FFB800] opacity-[0.07] blur-[120px] pointer-events-none -z-10"></div>
-  <div class="fixed bottom-[10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-green-500 opacity-[0.05] blur-[120px] pointer-events-none -z-10"></div>
+  <div class="fixed top-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#0099FF] opacity-[0.06] blur-[120px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-[10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-[#FFB800] opacity-[0.05] blur-[120px] pointer-events-none -z-10"></div>
 
-  <!-- Top Bar -->
   <div class="bg-[#FFB800] text-[#111] text-xs text-center py-2 font-semibold tracking-wide flex items-center justify-center gap-2">
     <span class="w-1.5 h-1.5 rounded-full bg-[#111] pulse-dot"></span>
-    Restam poucas unidades no estoque — Frete grátis para Sul, Sudeste e Centro-Oeste
+    Restam poucas unidades no estoque — Segurança e agilidade na entrega para todo o Brasil
   </div>
 
-  <!-- Navegação Glass -->
   <nav class="w-full z-50 p-5 sticky top-0 glass-nav">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
-        ← Voltar
-      </a>
+      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">← Voltar</a>
       <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
       <div class="flex items-center gap-4 text-white/60 text-sm font-medium">
         <span class="hidden md:inline hover:text-white cursor-pointer transition">Entrar</span>
@@ -114,94 +85,62 @@
     </div>
   </nav>
 
-  <!-- Breadcrumb -->
   <div class="max-w-6xl mx-auto w-full px-6 py-6 text-xs font-medium text-white/40 tracking-wider uppercase">
     <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
-    <a href="#" class="hover:text-[#FFB800] transition">Agro & Jardim</a> <span class="mx-2">/</span>
-    <a href="#" class="hover:text-[#FFB800] transition">Roçadeiras</a> <span class="mx-2">/</span>
-    <span class="text-white/90">FS 120</span>
+    <a href="#" class="hover:text-[#FFB800] transition">Equipamentos</a> <span class="mx-2">/</span>
+    <a href="#" class="hover:text-[#FFB800] transition">Lavadoras</a> <span class="mx-2">/</span>
+    <span class="text-white/90">RE 90 PLUS</span>
   </div>
 
   <main class="flex-grow pb-24">
-    <!-- Produto Principal -->
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-
-      <!-- Coluna da Galeria -->
       <div class="flex flex-col gap-5">
-        <!-- Card Vidro Principal Imagem -->
         <div class="glass rounded-3xl relative aspect-[4/3] md:aspect-square flex items-center justify-center p-8 overflow-hidden group">
-          
           <div class="absolute inset-0 bg-gradient-to-tr from-[#FFB800]/5 to-transparent pointer-events-none z-0"></div>
-
-          <span class="absolute top-5 left-5 text-[10px] font-bold uppercase tracking-widest bg-white/10 text-white border border-[#FFB800]/50 py-1.5 px-3 rounded-md z-30 shadow-lg text-[#FFB800]">Uso Profissional</span>
-          <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-widest glass text-white py-1.5 px-3 rounded-md z-30">4.9 ★</span>
-          
-          <img id="mainImage" src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201341.webp" alt="Roçadeira FS 120" class="w-full h-full max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 z-10 relative">
+          <span class="absolute top-5 left-5 text-[10px] font-bold uppercase tracking-widest bg-white/10 text-[#0099FF] border border-[#0099FF]/50 py-1.5 px-3 rounded-md z-30 shadow-lg">Alta Pressão</span>
+          <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-widest glass text-white py-1.5 px-3 rounded-md z-30">0.0 ★</span>
+          <img id="mainImage" src="Lavadora de Alta Pressão RE 90 PLUS/Lavadora_de_Alta_Pressão_RE_202607201351.webp" alt="Lavadora RE 90 PLUS" class="w-full h-full max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 z-10 relative">
         </div>
         
-        <!-- Grid de 3 colunas (Miniaturas de Vidro) -->
         <div class="grid grid-cols-3 gap-4">
-          <div class="glass thumb active aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
-            <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201341.webp" class="w-full h-full object-cover rounded-xl" alt="Vista 1">
-          </div>
-          <div class="glass thumb aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
-             <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201345.webp" class="w-full h-full object-cover rounded-xl" alt="Vista 2">
-          </div>
-          <div class="glass thumb aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
-             <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201347.webp" class="w-full h-full object-cover rounded-xl" alt="Detalhe">
-          </div>
+          <div class="glass thumb active aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)"><img src="Lavadora de Alta Pressão RE 90 PLUS/Lavadora_de_Alta_Pressão_RE_202607201351.webp" class="w-full h-full object-cover rounded-xl" alt="Vista 1"></div>
+          <div class="glass thumb aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)"><img src="Lavadora de Alta Pressão RE 90 PLUS/Lavadora_de_Alta_Pressão_RE_202607201353.webp" class="w-full h-full object-cover rounded-xl" alt="Vista 2"></div>
+          <div class="glass thumb aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)"><img src="Lavadora de Alta Pressão RE 90 PLUS/Lavadora_de_Alta_Pressão_RE_202607201357.webp" class="w-full h-full object-cover rounded-xl" alt="Detalhe"></div>
         </div>
 
-        <!-- Trust badges -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
-          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
-            <span class="text-xl">🛡️</span>
-            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Garantia<br>de fábrica</span>
-          </div>
-          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
-            <span class="text-xl">🚚</span>
-            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Envio em<br>24h úteis</span>
-          </div>
-          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
-            <span class="text-xl">📄</span>
-            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Nota fiscal<br>emitida</span>
-          </div>
-          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
-            <span class="text-xl">↩️</span>
-            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">7 dias para<br>troca</span>
-          </div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2"><span class="text-xl">🛡️</span><span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Garantia<br>de fábrica</span></div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2"><span class="text-xl">🚚</span><span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Agilidade<br>no Envio</span></div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2"><span class="text-xl">📄</span><span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Nota fiscal<br>emitida</span></div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2"><span class="text-xl">↩️</span><span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">7 dias para<br>troca</span></div>
         </div>
       </div>
 
-      <!-- Coluna Detalhes e Compra -->
       <div class="flex flex-col">
         <div class="flex items-center justify-between mb-3">
-          <span class="text-white/40 text-xs font-medium tracking-widest uppercase">Ref: 4134-011-2376</span>
-          <span class="text-[11px] text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">145 avaliações</span>
+          <span class="text-white/40 text-xs font-medium tracking-widest uppercase">Ref: RE02-011-RE90P</span>
+          <span class="text-[11px] text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">0 avaliações</span>
         </div>
         
-        <h1 class="font-anton text-5xl md:text-6xl tracking-wide mb-4 text-white drop-shadow-lg">ROÇADEIRA FS 120</h1>
+        <h1 class="font-anton text-5xl md:text-6xl tracking-wide mb-4 text-white drop-shadow-lg">LAVADORA RE 90 PLUS</h1>
 
         <div class="flex items-center gap-2 mb-6">
-          <span class="text-[#FFB800] text-sm tracking-widest">★★★★★</span>
-          <span class="text-white/50 text-xs">5.0/5 — recomendada por 100% dos clientes</span>
+          <span class="text-[#FFB800] text-sm tracking-widest">☆☆☆☆☆</span>
+          <span class="text-white/50 text-xs">Seja o primeiro a avaliar</span>
         </div>
 
         <p class="text-white/70 text-sm md:text-base font-light leading-relaxed mb-6">
-          A Roçadeira FS 120 da STIHL é excelente para roçada de mato emaranhado e capoeiras altas. Potente e confiável, essa roçadeira oferece alto desempenho e durabilidade inigualável.
+          Uma lavadora de alta pressão eficiente e confiável para uso ocasional em diversas tarefas de limpeza. Pressão devastadora contra o lodo, gentil com o seu piso.
         </p>
 
-        <!-- Benefícios rápidos -->
         <div class="flex flex-wrap gap-2 mb-8">
-          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">🌿 Lâmina 3 facas Ø250mm</span>
-          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">🧵 Fio de nylon incluso</span>
-          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">💪 Aço alta resistência</span>
+          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">🌪️ Bico Turbo</span>
+          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">💦 100 bar de pressão</span>
+          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">🛡️ Anti-tombamento</span>
         </div>
 
-        <!-- Preço em Highlight Glass ATUALIZADO -->
         <div class="glass-highlight rounded-3xl p-6 md:p-8 mb-6 relative overflow-hidden">
           <div class="absolute top-0 right-0 w-32 h-32 bg-[#FFB800] opacity-10 rounded-full blur-3xl -z-10"></div>
-          
           <p class="text-white/40 text-sm line-through mb-1">De R$ 1.599,00</p>
           <div class="flex items-baseline gap-3 mb-2 flex-wrap">
             <p class="font-anton text-5xl md:text-6xl brand-yellow drop-shadow-md">R$ 1.471,08</p>
@@ -211,158 +150,89 @@
           <p class="text-white/70 text-sm font-light mt-3 border-t border-white/10 pt-3">ou <strong class="text-white">R$ 1.599,00</strong> em até <strong>10x de R$ 159,90</strong> sem juros no cartão</p>
         </div>
 
-        <!-- Estoque -->
         <div class="mb-8 px-2">
           <div class="flex justify-between text-xs text-white/50 mb-2 uppercase tracking-wide">
             <span>Estoque disponível</span>
-            <span class="text-[#FFB800] font-semibold">Últimas 6 unidades</span>
+            <span class="text-[#FFB800] font-semibold">Últimas 5 unidades</span>
           </div>
           <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
-            <div class="stock-bar-fill h-full rounded-full shadow-[0_0_10px_#FFB800]" style="width:15%"></div>
+            <div class="stock-bar-fill h-full rounded-full shadow-[0_0_10px_#FFB800]" style="width:25%"></div>
           </div>
         </div>
 
-        <!-- CEP COM FUNÇÃO -->
         <div class="flex flex-col gap-2 mb-10">
           <label class="text-[11px] uppercase tracking-widest text-white/50 ml-1">Calcular frete e prazo</label>
           <div class="flex gap-3">
             <input type="text" id="cepInput" maxlength="9" placeholder="00000-000" class="glass-input rounded-xl px-4 py-3.5 outline-none transition w-full md:w-56 text-sm tracking-widest">
             <button id="btnFrete" onclick="calcularFrete()" class="glass hover:bg-white/10 text-white font-medium px-6 rounded-xl transition shadow-lg">OK</button>
           </div>
-          <!-- Caixa que vai aparecer o resultado -->
           <div id="freteResult" class="hidden glass rounded-xl p-4 mt-2 text-sm text-white/80 transition-all"></div>
         </div>
 
-        <!-- CTA Principal: Somente WhatsApp -->
         <div class="flex flex-col gap-4">
-          <a href="https://wa.me/556230997275?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20a%20Ro%C3%A7adeira%20FS%20120." target="_blank" class="btn-buy w-full py-4 md:py-5 rounded-2xl font-bold text-sm tracking-widest uppercase flex justify-center items-center gap-3 shadow-xl">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            Comprar via WhatsApp
+          <a href="https://wa.me/556230997275?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20a%20Lavadora%20RE%2090%20PLUS." target="_blank" class="btn-buy w-full py-4 md:py-5 rounded-2xl font-bold text-sm tracking-widest uppercase flex justify-center items-center gap-3 shadow-xl">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> Comprar via WhatsApp
           </a>
-        </div>
-
-        <div class="text-[11px] text-white/40 text-center mt-5 uppercase tracking-widest">
-          🔒 Compra 100% segura · Atendimento especializado
         </div>
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 mt-16 mb-8">
-      <hr class="border-white/10">
-    </div>
+    <div class="max-w-6xl mx-auto px-6 mt-16 mb-8"><hr class="border-white/10"></div>
 
-    <!-- Seções Adicionais -->
     <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
-
-      <!-- Esquerda: Textos e Tabelas -->
       <div class="lg:col-span-2 space-y-12">
-        <!-- Descrição Glass Card -->
         <section class="glass rounded-3xl p-8 md:p-10 relative overflow-hidden">
           <div class="absolute top-[-50px] right-[-50px] w-40 h-40 bg-white/5 rounded-full blur-3xl -z-10"></div>
           <h2 class="font-anton text-3xl tracking-wide text-white mb-6">DESCRIÇÃO DO PRODUTO</h2>
           <div class="text-white/70 font-light text-sm md:text-base leading-relaxed space-y-5">
-            <p>A Roçadeira FS 120 da STIHL é excelente para roçada de mato emaranhado e capoeiras altas. Potente e confiável, essa roçadeira oferece alto desempenho e durabilidade.</p>
-            <p><strong>Conjunto de Corte Insuperável:</strong> Acompanha fio de nylon e Lâmina de 3 facas Ø 250 mm feita em aço especial de alta resistência, recomendada especificamente para trabalhos exigentes em mato alto e lenhoso com até 2 cm de diâmetro.</p>
+            <p>Leve, compacta e surpreendentemente forte. A Lavadora RE 90 PLUS conta com um engate rápido da mangueira, que facilita a montagem e desmontagem, e um prático bico pulverizador para a aplicação de detergente.</p>
+            <p>Seja para tirar a sujeira incrustada da calçada com o bico turbo rotativo, ou para lavar a pintura do carro com o bico leque regulável, ela se adapta a qualquer tarefa do dia a dia da sua casa.</p>
           </div>
         </section>
 
-        <!-- Especificações -->
         <section>
           <h2 class="font-anton text-3xl tracking-wide text-white mb-2 px-2">ESPECIFICAÇÕES TÉCNICAS</h2>
-          <p class="text-white/40 text-xs mb-6 px-2">As imagens são meramente ilustrativas. O design pode sofrer alterações.</p>
+          <p class="text-white/40 text-xs mb-6 px-2">As imagens são meramente ilustrativas.</p>
           <div class="glass rounded-3xl overflow-hidden p-2">
             <table class="specs-table">
               <tbody>
-                <tr><td>Cilindrada (cm³)</td><td>30.8</td></tr>
-                <tr><td>Potência (kW/cv)</td><td>1.3 / 1.8</td></tr>
-                <tr><td>Peso (kg)</td><td>6.3</td></tr>
-                <tr><td>Ferramenta de corte 1</td><td>Lâmina de 3 pontas (250mm)</td></tr>
-                <tr><td>Ferramenta de corte 2</td><td>Fio de Nylon</td></tr>
-                <tr><td>Capacidade do tanque (l)</td><td>0.64</td></tr>
-                <tr><td>Eixo de transmissão</td><td>Rígido</td></tr>
+                <tr><td>Pressão máxima (bar)</td><td>100</td></tr>
+                <tr><td>Vazão máxima de água (l/h)</td><td>440</td></tr>
+                <tr><td>Potência (kW)</td><td>1.5</td></tr>
+                <tr><td>Peso (kg)</td><td>9.0</td></tr>
+                <tr><td>Mangueira de alta pressão (m)</td><td>6.0</td></tr>
+                <tr><td>Voltagem</td><td>Consulte 127V ou 220V</td></tr>
               </tbody>
             </table>
           </div>
         </section>
-
-        <!-- Comparativo -->
-        <section>
-          <h2 class="font-anton text-3xl tracking-wide text-white mb-6 px-2">QUAL VERSÃO É IDEAL PRA VOCÊ?</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            
-            <div class="glass rounded-3xl p-8">
-              <p class="font-anton text-2xl tracking-wide mb-1 mt-2 text-white/50">FS 85</p>
-              <p class="text-white/40 text-xs mb-5 uppercase tracking-wider">Uso semi-profissional</p>
-              <p class="font-anton text-3xl text-white/50 mb-5">R$ 1.849,00</p>
-              <ul class="text-sm text-white/40 space-y-2.5 font-light">
-                <li>• 0.95 kW · 5.3 kg</li>
-                <li>• Eixo flexível</li>
-                <li>• Ideal para sítios e chácaras</li>
-              </ul>
-            </div>
-
-            <div class="glass-highlight rounded-3xl p-8 relative overflow-hidden">
-              <span class="absolute top-6 right-6 bg-[#FFB800] text-[#111] text-[10px] font-bold uppercase px-3 py-1 rounded-full shadow-lg">Você está aqui</span>
-              <p class="font-anton text-2xl tracking-wide mb-1 mt-2 text-white">FS 120</p>
-              <p class="text-white/60 text-xs mb-5 uppercase tracking-wider">Uso agro e profissional</p>
-              <p class="font-anton text-3xl brand-yellow mb-5 drop-shadow-md">R$ 1.471,08</p>
-              <ul class="text-sm text-white/70 space-y-2.5 font-light">
-                <li>• 1.3 kW · 6.3 kg</li>
-                <li>• Lâmina 3 facas Ø 250 mm</li>
-                <li>• Alto torque p/ mato pesado</li>
-              </ul>
-            </div>
-            
-          </div>
-        </section>
       </div>
 
-      <!-- Direita: Embalagem e Avaliações -->
       <div class="space-y-8">
         <section class="glass rounded-3xl p-8">
           <h2 class="font-anton text-2xl tracking-wide text-white mb-6">CONTEÚDO DA EMBALAGEM</h2>
           <ul class="package-list">
-            <li>01 Roçadeira FS 120</li>
-            <li>01 Lâmina de 3 pontas (Aço alta resistência)</li>
-            <li>01 Carretel de Fio de Nylon</li>
-            <li>01 Cinto duplo ergonômico</li>
-            <li>01 Óculos de proteção</li>
-            <li>01 Jogo de chaves e Manual</li>
+            <li>01 Lavadora RE 90 PLUS</li>
+            <li>01 Mangueira de alta pressão (6m)</li>
+            <li>01 Pistola com engate rápido</li>
+            <li>01 Bico turbo giratório</li>
+            <li>01 Bico leque regulável</li>
+            <li>01 Recipiente para detergente</li>
           </ul>
-        </section>
-
-        <section class="glass rounded-3xl p-8 text-center flex flex-col items-center justify-center">
-          <h2 class="font-anton text-2xl tracking-wide text-white mb-4 w-full text-left">AVALIAÇÕES</h2>
-          <div class="text-[#FFB800] text-3xl tracking-widest mb-3 drop-shadow-[0_0_8px_rgba(255,184,0,0.5)]">★★★★★</div>
-          <p class="text-white text-5xl font-anton tracking-wide mb-2">5.0</p>
-          <p class="text-white/40 text-xs uppercase tracking-widest">Baseado em 1 avaliação real</p>
         </section>
       </div>
     </div>
   </main>
 
-  <!-- Sticky CTA mobile Glass -->
-  <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 right-0 z-50 glass-nav p-5 flex items-center justify-between gap-4 md:hidden border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-    <div>
-      <p class="text-white/50 text-[10px] uppercase tracking-widest mb-1">Roçadeira FS 120</p>
-      <p class="font-anton text-2xl brand-yellow leading-none">R$ 1.471,08</p>
-    </div>
-    <a href="https://wa.me/556230997275?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20a%20Ro%C3%A7adeira%20FS%20120." target="_blank" class="btn-buy px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg flex items-center gap-2">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-      Comprar
-    </a>
-  </div>
-
   <footer class="border-t border-white/5 bg-black/50 backdrop-blur-md py-10 text-center">
     <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:12px;align-items:center;">
         <div style="font-family:'Anton',sans-serif;letter-spacing:0.15em;font-size:22px;color:rgba(255,255,255,0.8);">Araguaia <span style="color:#FFB800;">Máquinas</span></div>
         <p style="font-size:12px;color:rgba(255,255,255,0.4);font-weight:300;line-height:1.6;max-width:300px;">Av. Tiradentes, 30 - 92003.4296<br>Centro, Anápolis - GO, 75043-045<br>WhatsApp: (62) 3099-7275</p>
-        <p class="text-white/30 text-xs font-light uppercase tracking-widest mt-4">© 2026 Araguaia Máquinas. Todos os direitos reservados.</p>
+        <p class="text-white/30 text-xs font-light uppercase tracking-widest mt-4">CNPJ: 10.655.510/0001-50<br>© 2026 Araguaia Máquinas. Todos os direitos reservados.</p>
     </div>
   </footer>
 
   <script>
-    // Função para as miniaturas
     function setActive(el){
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
@@ -370,32 +240,13 @@
       if(img){ document.getElementById('mainImage').src = img.src; }
     }
 
-    // Botão flutuante mobile
-    const stickyCta = document.getElementById('stickyCta');
-    let lastY = 0;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > 500) { stickyCta.classList.add('show'); }
-      else { stickyCta.classList.remove('show'); }
-      lastY = y;
-    });
-
-    // ==========================================
-    // FUNÇÃO DE CÁLCULO DE FRETE (VIACEP)
-    // ==========================================
-
     const cepInput = document.getElementById('cepInput');
-    
-    // Máscara automática enquanto digita o CEP
     cepInput.addEventListener('input', function (e) {
       let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 5) {
-        value = value.replace(/^(\d{5})(\d)/, '$1-$2');
-      }
+      if (value.length > 5) { value = value.replace(/^(\d{5})(\d)/, '$1-$2'); }
       e.target.value = value;
     });
 
-    // Ação do Botão OK
     async function calcularFrete() {
       const btnFrete = document.getElementById('btnFrete');
       const resultDiv = document.getElementById('freteResult');
@@ -403,12 +254,10 @@
 
       if (cep.length !== 8) {
         resultDiv.innerHTML = '<span class="text-red-400">Por favor, digite um CEP válido (8 dígitos).</span>';
-        resultDiv.classList.remove('hidden');
-        return;
+        resultDiv.classList.remove('hidden'); return;
       }
 
-      btnFrete.innerText = '...';
-      btnFrete.disabled = true;
+      btnFrete.innerText = '...'; btnFrete.disabled = true;
       resultDiv.classList.add('hidden');
 
       try {
@@ -416,20 +265,20 @@
         const data = await response.json();
 
         if (data.erro) {
-          resultDiv.innerHTML = '<span class="text-red-400">CEP não encontrado. Verifique os números.</span>';
+          resultDiv.innerHTML = '<span class="text-red-400">CEP não encontrado.</span>';
         } else {
           const uf = data.uf;
           const cidade = data.localidade;
-          
-          const freteGratisUF = ['PR', 'SC', 'RS', 'SP', 'RJ', 'MG', 'ES', 'MS', 'MT', 'GO', 'DF'];
-          
           let valorFrete, prazo;
 
-          if (freteGratisUF.includes(uf)) {
-            valorFrete = '<span class="text-[#FFB800] font-bold text-base tracking-wider uppercase">Grátis</span>';
-            prazo = '4 a 7 dias úteis';
+          if (['GO', 'DF'].includes(uf)) {
+            valorFrete = '<span class="text-white font-bold tracking-wider">R$ 25,90</span>';
+            prazo = '2 a 4 dias úteis';
+          } else if (['SP', 'RJ', 'MG', 'ES', 'PR', 'SC', 'RS', 'MS', 'MT'].includes(uf)) {
+            valorFrete = '<span class="text-white font-bold tracking-wider">R$ 48,90</span>';
+            prazo = '5 a 8 dias úteis';
           } else {
-            valorFrete = '<span class="text-white font-bold tracking-wider">R$ 68,90</span>';
+            valorFrete = '<span class="text-white font-bold tracking-wider">R$ 78,90</span>';
             prazo = '9 a 15 dias úteis';
           }
 
@@ -449,9 +298,7 @@
       } catch (error) {
         resultDiv.innerHTML = '<span class="text-red-400">Erro ao buscar CEP. Tente novamente mais tarde.</span>';
       } finally {
-        resultDiv.classList.remove('hidden'); 
-        btnFrete.innerText = 'OK';            
-        btnFrete.disabled = false;
+        resultDiv.classList.remove('hidden'); btnFrete.innerText = 'OK'; btnFrete.disabled = false;
       }
     }
   </script>
