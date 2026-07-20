@@ -70,7 +70,8 @@
         #loader-bar { position: absolute; left: 0; top: 0; height: 100%; background: #FFB800; width: 0%; transition: width 0.15s ease; }
         #loader-pct { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: rgba(255,255,255,0.25); }
 
-        nav { position: fixed; top: 0; width: 100%; z-index: 50; padding: 20px 24px; transition: padding 0.4s ease; will-change: background-color; }
+        /* NAVEGAÇÃO E LOGO - AJUSTADO PARA FICAR SEMPRE VISÍVEL */
+        nav { position: fixed; top: 0; width: 100%; z-index: 99999; padding: 20px 24px; transition: padding 0.4s ease; will-change: background-color; }
         .nav-inner {
             max-width: 1200px; margin: 0 auto;
             display: flex; justify-content: space-between; align-items: center;
@@ -78,8 +79,8 @@
             border: 0.5px solid rgba(255,255,255,0.08); padding: 14px 28px; border-radius: 100px;
             transition: background 0.4s ease, border-color 0.4s ease;
         }
-        nav.scrolled .nav-inner { background: rgba(17,17,17,0.85); border-color: rgba(255,255,255,0.12); }
-        .nav-logo { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 15px; color: rgba(255,255,255,0.9); }
+        nav.scrolled .nav-inner { background: rgba(17,17,17,0.95); border-color: rgba(255,255,255,0.2); }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 26px; font-weight: bold; color: #FFFFFF; position: relative; z-index: 100000; text-shadow: 0px 2px 10px rgba(0,0,0,0.5); }
         .nav-logo span { color: #FFB800; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
@@ -244,7 +245,7 @@
         select.contact-form-input { appearance: none; }
 
         footer { background: #0A0A0A; border-top: 0.5px solid rgba(255,255,255,0.06); }
-        .footer-logo { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 22px; color: rgba(255,255,255,0.8); }
+        .footer-logo { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 26px; color: #FFFFFF; font-weight: bold; }
         .footer-logo span { color: #FFB800; }
         .footer-col-title { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 0.15em; color: #fff; margin-bottom: 20px; }
         .footer-link { font-size: 12px; color: rgba(255,255,255,0.25); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s ease; }
