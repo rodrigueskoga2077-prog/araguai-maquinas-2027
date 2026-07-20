@@ -1,212 +1,384 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Motosserra MS 170 - Araguaia Máquinas</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <style>
-        body { background-color: #111111; color: #F8F8F8; font-family: 'DM Sans', sans-serif; }
-        .font-anton { font-family: 'Anton', sans-serif; }
-        .brand-yellow { color: #FFB800; }
-        .bg-brand-yellow { background: #FFB800; }
-        
-        .btn-buy { background: linear-gradient(135deg, #FFB800, #CC9200); color: #111; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(255,184,0,0.6); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Motosserra MS 170 - Araguaia Máquinas</title>
 
-        /* Estilos específicos para a estrutura base adaptada ao Dark Theme */
-        .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .specs-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .specs-table tr:last-child td { border-bottom: none; }
-        .specs-table td:first-child { color: rgba(255,255,255,0.5); }
-        .specs-table td:last-child { font-weight: 500; text-align: right; color: #F8F8F8; }
-        
-        .package-list { list-style: none; padding: 0; }
-        .package-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-weight: 300; color: rgba(255,255,255,0.7); }
-        .package-list li::before { content: "✔️"; position: absolute; left: 0; top: 1px; font-size: 12px; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-        .thumb { border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.2s ease; cursor: pointer; }
-        .thumb:hover { border-color: #FFB800; }
-        .thumb.active { border-color: #FFB800; background: rgba(255,184,0,0.05); }
-    </style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style>
+  body { background-color:#111111; color:#F8F8F8; font-family:'DM Sans', sans-serif; }
+  .font-anton { font-family:'Anton', sans-serif; }
+  .brand-yellow { color:#FFB800; }
+  .bg-brand-yellow { background:#FFB800; }
+
+  .btn-buy { background:linear-gradient(135deg,#FFC933,#CC9200); color:#111; transition:transform .25s ease, box-shadow .25s ease; }
+  .btn-buy:hover { transform:translateY(-2px); box-shadow:0 12px 34px -10px rgba(255,184,0,.55); }
+  .btn-wpp { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); transition:.25s ease; }
+  .btn-wpp:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.25); }
+
+  .specs-table { width:100%; border-collapse:collapse; font-size:14px; }
+  .specs-table td { padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .specs-table tr:last-child td { border-bottom:none; }
+  .specs-table td:first-child { color:rgba(255,255,255,.5); }
+  .specs-table td:last-child { font-weight:600; text-align:right; color:#F8F8F8; }
+
+  .package-list { list-style:none; padding:0; }
+  .package-list li { position:relative; padding-left:26px; margin-bottom:12px; font-weight:300; color:rgba(255,255,255,.7); font-size:14px; }
+  .package-list li::before { content:"✔"; position:absolute; left:0; top:0; font-size:12px; color:#FFB800; }
+
+  .thumb { border:1px solid rgba(255,255,255,.1); transition:border-color .2s ease, transform .2s ease; cursor:pointer; }
+  .thumb:hover { border-color:#FFB800; transform:translateY(-2px); }
+  .thumb.active { border-color:#FFB800; background:rgba(255,184,0,.06); }
+
+  .pulse-dot { animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(255,184,0,.6);} 70%{ box-shadow:0 0 0 8px rgba(255,184,0,0);} 100%{ box-shadow:0 0 0 0 rgba(255,184,0,0);} }
+
+  .stock-bar-fill { background:linear-gradient(90deg,#FFB800,#FF7A00); }
+
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  details[open] .faq-icon { transform:rotate(45deg); }
+
+  .sticky-cta { transform:translateY(120%); transition:transform .35s ease; }
+  .sticky-cta.show { transform:translateY(0); }
+
+  ::selection { background:#FFB800; color:#111; }
+
+  .fade-up { opacity:0; transform:translateY(16px); animation:fadeUp .6s ease forwards; }
+  @keyframes fadeUp { to { opacity:1; transform:translateY(0);} }
+</style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative">
 
-    <!-- Top Bar -->
-    <div class="bg-[#FFB800] text-[#111] text-xs text-center py-2 font-medium tracking-wide">
-        Frete Grátis para Sul, Sudeste e Centro-Oeste — Loja Oficial Araguaia Máquinas
+  <!-- Top Bar: urgência + benefício -->
+  <div class="bg-[#FFB800] text-[#111] text-xs text-center py-2 font-semibold tracking-wide flex items-center justify-center gap-2">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#111] pulse-dot"></span>
+    Restam poucas unidades no estoque — Frete grátis para Sul, Sudeste e Centro-Oeste
+  </div>
+
+  <!-- Navegação -->
+  <nav class="w-full z-50 p-5 border-b border-white/10 bg-[#111111]/90 backdrop-blur-md sticky top-0">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
+        ← Voltar
+      </a>
+      <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
+      <div class="flex items-center gap-4 text-white/60 text-sm font-medium">
+        <span class="hidden md:inline hover:text-white cursor-pointer transition">Entrar</span>
+        <span class="flex items-center gap-1 cursor-pointer hover:text-white transition">
+          🛒 <span class="bg-[#FFB800] text-[#111] rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">0</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="max-w-6xl mx-auto w-full px-6 py-4 text-xs font-medium text-white/40 tracking-wider uppercase">
+    <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
+    <a href="#" class="hover:text-[#FFB800] transition">Agro & Jardim</a> <span class="mx-2">/</span>
+    <a href="#" class="hover:text-[#FFB800] transition">Motosserras</a> <span class="mx-2">/</span>
+    <span class="text-white/80">MS 170</span>
+  </div>
+
+  <main class="flex-grow pb-24">
+
+    <!-- Produto Principal -->
+    <div class="max-w-6xl mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+
+      <!-- Galeria -->
+      <div class="flex flex-col gap-4">
+        <div id="mainImageBox" class="relative aspect-[4/3] md:aspect-square flex items-center justify-center bg-gradient-to-tr from-white/5 to-transparent rounded-2xl border border-white/10 p-8 overflow-hidden group">
+          <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest bg-[#FFB800] text-[#111] py-1.5 px-3 rounded-md z-10">Campeã de Vendas</span>
+          <span class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest bg-white/10 text-white py-1.5 px-3 rounded-md z-10 backdrop-blur-sm">4.9 ★</span>
+          <img id="mainImage" src="https://buildix-user-images.s3.us-east-2.amazonaws.com/ai-generated/61d9099a-1c08-49c3-86ff-07c42a99365e.webp" alt="Motosserra a Combustão MS 170" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+          <div class="thumb active aspect-square rounded-xl bg-white/5 flex items-center justify-center p-2" onclick="setActive(this)">
+            <img src="https://buildix-user-images.s3.us-east-2.amazonaws.com/ai-generated/61d9099a-1c08-49c3-86ff-07c42a99365e.webp" class="w-full h-full object-contain">
+          </div>
+          <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/20 text-xs font-light text-center p-2" onclick="setActive(this)">Foto<br>Detalhe 1</div>
+          <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/20 text-xs font-light text-center p-2" onclick="setActive(this)">Foto<br>Detalhe 2</div>
+          <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/20 text-xs font-light text-center p-2" onclick="setActive(this)">Foto<br>Uso</div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
+          <div class="flex flex-col items-center gap-1.5 bg-white/5 border border-white/10 rounded-xl py-3 px-2 text-center">
+            <span class="text-lg">🛡️</span>
+            <span class="text-[10px] text-white/50 uppercase tracking-wide leading-tight">Garantia<br>de fábrica</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 bg-white/5 border border-white/10 rounded-xl py-3 px-2 text-center">
+            <span class="text-lg">🚚</span>
+            <span class="text-[10px] text-white/50 uppercase tracking-wide leading-tight">Envio em<br>24h úteis</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 bg-white/5 border border-white/10 rounded-xl py-3 px-2 text-center">
+            <span class="text-lg">📄</span>
+            <span class="text-[10px] text-white/50 uppercase tracking-wide leading-tight">Nota fiscal<br>emitida</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 bg-white/5 border border-white/10 rounded-xl py-3 px-2 text-center">
+            <span class="text-lg">↩️</span>
+            <span class="text-[10px] text-white/50 uppercase tracking-wide leading-tight">7 dias para<br>troca</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalhes e Compra -->
+      <div class="flex flex-col">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-white/30 text-xs font-medium tracking-widest uppercase">Ref: 1130-200-0000</span>
+          <span class="text-[11px] text-white/40">128 avaliações</span>
+        </div>
+        <h1 class="font-anton text-4xl md:text-5xl tracking-wide mb-3 text-[#F8F8F8]">MOTOSSERRA MS 170</h1>
+
+        <div class="flex items-center gap-1 mb-4">
+          <span class="text-[#FFB800] text-sm tracking-widest">★★★★★</span>
+          <span class="text-white/40 text-xs ml-1">4.9/5 — recomendada por 96% dos clientes</span>
+        </div>
+
+        <p class="text-white/60 text-sm md:text-base font-light leading-relaxed mb-5">
+          A lenda compacta. Potência na medida exata para cortes rápidos e manutenção do terreno. Ideal para uso doméstico, poda de árvores, corte de lenha e construções em madeira.
+        </p>
+
+        <!-- Benefícios rápidos -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="text-[11px] bg-white/5 border border-white/10 text-white/70 px-3 py-1.5 rounded-full">⚡ Partida fácil</span>
+          <span class="text-[11px] bg-white/5 border border-white/10 text-white/70 px-3 py-1.5 rounded-full">🪶 Apenas 4.3 kg</span>
+          <span class="text-[11px] bg-white/5 border border-white/10 text-white/70 px-3 py-1.5 rounded-full">🔧 Baixa manutenção</span>
+        </div>
+
+        <!-- Box de Preço -->
+        <div class="border-y border-white/10 py-6 mb-5">
+          <p class="text-white/40 text-sm line-through mb-1">De R$ 1.350,00</p>
+          <div class="flex items-baseline gap-2 mb-2 flex-wrap">
+            <p class="font-anton text-4xl md:text-5xl brand-yellow">R$ 1.199,00</p>
+            <span class="text-white/50 text-sm font-medium uppercase tracking-wider">no PIX</span>
+            <span class="text-[11px] bg-[#FFB800]/15 text-[#FFB800] font-bold px-2 py-1 rounded-md">-11%</span>
+          </div>
+          <p class="text-white/60 text-sm font-light">ou <strong class="text-white">R$ 1.250,00</strong> em até <strong>10x de R$ 125,00</strong> sem juros no cartão</p>
+        </div>
+
+        <!-- Estoque -->
+        <div class="mb-6">
+          <div class="flex justify-between text-xs text-white/50 mb-1.5">
+            <span>Estoque disponível</span>
+            <span class="text-[#FFB800] font-semibold">Últimas 4 unidades</span>
+          </div>
+          <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div class="stock-bar-fill h-full rounded-full" style="width:20%"></div>
+          </div>
+        </div>
+
+        <!-- CEP -->
+        <div class="flex flex-col gap-2 mb-8">
+          <label class="text-[11px] uppercase tracking-widest text-white/40">Calcular frete e prazo</label>
+          <div class="flex gap-3">
+            <input type="text" placeholder="Digite seu CEP" class="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-4 py-3 outline-none focus:border-[#FFB800] transition w-48">
+            <button class="bg-white/10 hover:bg-white/15 text-white/80 text-sm font-medium px-5 rounded-lg transition">OK</button>
+          </div>
+          <a href="#" class="text-[#FFB800] text-xs hover:underline mt-1">Não sei meu CEP</a>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col gap-3">
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20a%20Motosserra%20MS%20170." target="_blank" class="btn-buy w-full py-4 rounded-xl font-bold text-sm tracking-widest uppercase flex justify-center items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Comprar via WhatsApp
+          </a>
+          <button class="btn-wpp w-full py-4 rounded-xl font-bold text-sm tracking-widest uppercase text-white/80">
+            Adicionar à sacola
+          </button>
+        </div>
+
+        <div class="text-xs text-white/40 text-center mt-4">
+          🔒 Compra 100% segura · Atendimento humano especializado
+        </div>
+      </div>
     </div>
 
-    <!-- Navegação -->
-    <nav class="w-full z-50 p-6 border-b border-white/10 bg-[#111111]/90 backdrop-blur-md sticky top-0">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
-                ← Voltar
-            </a>
-            <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
-            <div class="flex items-center gap-4 text-white/60 text-sm font-medium">
-                <span class="hidden md:inline hover:text-white cursor-pointer transition">Entrar</span>
-                <span class="flex items-center gap-1 cursor-pointer hover:text-white transition">
-                    🛒 <span class="bg-[#FFB800] text-[#111] rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold">0</span>
-                </span>
-            </div>
-        </div>
-    </nav>
+    <div class="max-w-6xl mx-auto px-6"><hr class="border-white/5"></div>
 
-    <!-- Breadcrumb -->
-    <div class="max-w-6xl mx-auto w-full px-6 py-4 text-xs font-medium text-white/40 tracking-wider uppercase">
-        <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span> 
-        <a href="#" class="hover:text-[#FFB800] transition">Agro & Jardim</a> <span class="mx-2">/</span> 
-        <a href="#" class="hover:text-[#FFB800] transition">Motosserras</a> <span class="mx-2">/</span> 
-        <span class="text-white/80">MS 170</span>
+    <!-- Seções Adicionais -->
+    <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+      <div class="lg:col-span-2 space-y-16">
+
+        <!-- Descrição -->
+        <section>
+          <h2 class="font-anton text-2xl tracking-wide text-white mb-6">DESCRIÇÃO DO PRODUTO</h2>
+          <div class="text-white/60 font-light text-sm md:text-base leading-relaxed space-y-4">
+            <p>Indicado para manter áreas externas organizadas, cortar lenha e realizar manutenções em sítios e fazendas. A Motosserra MS 170 entrega um excelente desempenho aliada a um peso extremamente baixo, facilitando o trabalho contínuo.</p>
+            <p>Sua construção ergonômica com sistema anti-vibração garante conforto durante o manuseio, sendo a opção de entrada perfeita para quem busca qualidade profissional em aplicações domésticas ou agropecuárias de pequeno porte.</p>
+          </div>
+        </section>
+
+        <!-- Especificações -->
+        <section>
+          <h2 class="font-anton text-2xl tracking-wide text-white mb-2">ESPECIFICAÇÕES TÉCNICAS</h2>
+          <p class="text-white/40 text-xs mb-6">As imagens são meramente ilustrativas. O design pode sofrer alterações de fábrica sem aviso prévio.</p>
+          <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden p-1">
+            <table class="specs-table">
+              <tbody>
+                <tr><td>Cilindrada (cm³)</td><td>30.1</td></tr>
+                <tr><td>Potência (kW/cv)</td><td>1.3 / 1.7</td></tr>
+                <tr><td>Peso (kg)</td><td>4.3</td></tr>
+                <tr><td>Sabre (tamanho sugerido - cm)</td><td>30 ou 35</td></tr>
+                <tr><td>Corrente (passo)</td><td>3/8" P</td></tr>
+                <tr><td>Capacidade do tanque (l)</td><td>0.25</td></tr>
+                <tr><td>Nível de pressão sonora dB(A)</td><td>100</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Comparativo -->
+        <section>
+          <h2 class="font-anton text-2xl tracking-wide text-white mb-6">QUAL VERSÃO É IDEAL PRA VOCÊ?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="border-2 border-[#FFB800] rounded-2xl p-6 bg-[#FFB800]/5 relative">
+              <span class="absolute -top-3 left-6 bg-[#FFB800] text-[#111] text-[10px] font-bold uppercase px-3 py-1 rounded-full">Esta página</span>
+              <p class="font-anton text-lg tracking-wide mb-1 mt-2">MS 170</p>
+              <p class="text-white/50 text-xs mb-4">Uso doméstico e ocasional</p>
+              <p class="font-anton text-2xl brand-yellow mb-4">R$ 1.199,00</p>
+              <ul class="text-xs text-white/60 space-y-1.5">
+                <li>• 1.3 kW · 4.3 kg</li>
+                <li>• Sabre até 35cm</li>
+                <li>• Ideal para poda e lenha</li>
+              </ul>
+            </div>
+            <div class="border border-white/10 rounded-2xl p-6">
+              <p class="font-anton text-lg tracking-wide mb-1 mt-2 text-white/70">MS 250</p>
+              <p class="text-white/40 text-xs mb-4">Uso profissional intenso</p>
+              <p class="font-anton text-2xl text-white/50 mb-4">R$ 2.390,00</p>
+              <ul class="text-xs text-white/40 space-y-1.5">
+                <li>• 2.3 kW · 5.4 kg</li>
+                <li>• Sabre até 45cm</li>
+                <li>• Ideal para corte diário pesado</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+          <h2 class="font-anton text-2xl tracking-wide text-white mb-6">PERGUNTAS FREQUENTES</h2>
+          <div class="space-y-3">
+            <details class="bg-white/5 border border-white/10 rounded-xl p-4 group">
+              <summary class="flex justify-between items-center text-sm font-medium text-white/85">
+                A motosserra já vem montada?
+                <span class="faq-icon transition-transform text-[#FFB800] text-lg">+</span>
+              </summary>
+              <p class="text-white/50 text-sm font-light mt-3 leading-relaxed">Sim, o sabre e a corrente já vêm instalados de fábrica. Você só precisa abastecer com a mistura de combustível recomendada no manual.</p>
+            </details>
+            <details class="bg-white/5 border border-white/10 rounded-xl p-4 group">
+              <summary class="flex justify-between items-center text-sm font-medium text-white/85">
+                Qual o prazo de entrega?
+                <span class="faq-icon transition-transform text-[#FFB800] text-lg">+</span>
+              </summary>
+              <p class="text-white/50 text-sm font-light mt-3 leading-relaxed">O envio ocorre em até 24h úteis após a confirmação do pagamento. O prazo de entrega varia conforme o CEP informado no cálculo de frete.</p>
+            </details>
+            <details class="bg-white/5 border border-white/10 rounded-xl p-4 group">
+              <summary class="flex justify-between items-center text-sm font-medium text-white/85">
+                Tem garantia? Como funciona a troca?
+                <span class="faq-icon transition-transform text-[#FFB800] text-lg">+</span>
+              </summary>
+              <p class="text-white/50 text-sm font-light mt-3 leading-relaxed">Sim, garantia de fábrica contra defeitos e 7 dias corridos para troca ou devolução, conforme o Código de Defesa do Consumidor.</p>
+            </details>
+          </div>
+        </section>
+      </div>
+
+      <!-- Coluna Lateral -->
+      <div class="space-y-12">
+
+        <section class="bg-white/5 border border-white/10 rounded-2xl p-6">
+          <h2 class="font-anton text-xl tracking-wide text-white mb-6">CONTEÚDO DA EMBALAGEM</h2>
+          <ul class="package-list">
+            <li>01 Motosserra MS 170</li>
+            <li>01 Sabre Rollomatic E</li>
+            <li>01 Corrente Picco Micro 3</li>
+            <li>01 Capa de proteção do sabre</li>
+            <li>01 Chave combinada</li>
+            <li>01 Manual de instrução</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="font-anton text-xl tracking-wide text-white mb-4">INSTRUÇÕES DE USO</h2>
+          <a href="#" class="inline-flex items-center gap-2 text-[#FFB800] border border-[#FFB800]/50 hover:bg-[#FFB800]/10 px-5 py-3 rounded-lg text-sm font-medium transition">
+            📄 Baixar manual em PDF
+          </a>
+        </section>
+
+        <!-- Avaliações com depoimentos -->
+        <section>
+          <h2 class="font-anton text-xl tracking-wide text-white mb-4">AVALIAÇÕES</h2>
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center mb-4">
+            <div class="text-[#FFB800] text-2xl tracking-widest mb-2">★★★★★</div>
+            <p class="text-white text-3xl font-bold mb-1">4.9</p>
+            <p class="text-white/40 text-xs">Baseado em 128 avaliações de clientes reais</p>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[#FFB800] text-xs">★★★★★</span>
+                <span class="text-[9px] text-white/30 uppercase">Compra verificada</span>
+              </div>
+              <p class="text-white/60 text-xs font-light leading-relaxed">"Leve e fácil de dar partida, resolveu o corte de lenha aqui em casa sem complicação."</p>
+              <p class="text-white/30 text-[10px] mt-2">— R. Almeida</p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[#FFB800] text-xs">★★★★★</span>
+                <span class="text-[9px] text-white/30 uppercase">Compra verificada</span>
+              </div>
+              <p class="text-white/60 text-xs font-light leading-relaxed">"Entrega rápida e produto muito bem embalado. Já indiquei para dois amigos."</p>
+              <p class="text-white/30 text-[10px] mt-2">— T. Ferreira</p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </main>
 
-    <main class="flex-grow pb-24">
-        <!-- Produto Principal (Galeria e Infos) -->
-        <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-            
-            <!-- Coluna Esquerda: Galeria -->
-            <div class="flex flex-col gap-4">
-                <div class="relative aspect-[4/3] md:aspect-square flex items-center justify-center bg-gradient-to-tr from-white/5 to-transparent rounded-2xl border border-white/10 p-8 overflow-hidden">
-                    <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest bg-[#FFB800] text-[#111] py-1.5 px-3 rounded-md z-10">Campeã de Vendas</span>
-                    <img src="https://buildix-user-images.s3.us-east-2.amazonaws.com/ai-generated/61d9099a-1c08-49c3-86ff-07c42a99365e.webp" alt="Motosserra a Combustão MS 170" class="w-full h-full object-contain drop-shadow-2xl">
-                </div>
-                <!-- Thumbnails -->
-                <div class="grid grid-cols-4 gap-4">
-                    <div class="thumb active aspect-square rounded-xl bg-white/5 flex items-center justify-center p-2">
-                        <img src="https://buildix-user-images.s3.us-east-2.amazonaws.com/ai-generated/61d9099a-1c08-49c3-86ff-07c42a99365e.webp" class="w-full h-full object-contain">
-                    </div>
-                    <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/20 text-xs font-light text-center p-2">Foto<br>Detalhe 1</div>
-                    <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/20 text-xs font-light text-center p-2">Foto<br>Detalhe 2</div>
-                    <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center text-white/20 text-xs font-light text-center p-2">Foto<br>Uso</div>
-                </div>
-            </div>
+  <!-- Sticky CTA mobile -->
+  <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 right-0 z-50 bg-[#111111]/95 backdrop-blur-md border-t border-white/10 p-4 flex items-center justify-between gap-4 md:hidden">
+    <div>
+      <p class="text-white/40 text-[10px] uppercase tracking-wide">MS 170</p>
+      <p class="font-anton text-lg brand-yellow leading-none">R$ 1.199,00</p>
+    </div>
+    <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20a%20Motosserra%20MS%20170." target="_blank" class="btn-buy px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest">
+      Comprar
+    </a>
+  </div>
 
-            <!-- Coluna Direita: Detalhes e Compra -->
-            <div class="flex flex-col">
-                <div class="text-white/30 text-xs font-medium tracking-widest uppercase mb-2">Ref: 1130-200-0000</div>
-                <h1 class="font-anton text-4xl md:text-5xl tracking-wide mb-4 text-[#F8F8F8]">MOTOSSERRA MS 170</h1>
-                
-                <p class="text-white/60 text-sm md:text-base font-light leading-relaxed mb-6">
-                    A lenda compacta. Potência na medida exata para cortes rápidos e manutenção do terreno. Ideal para uso doméstico, poda de árvores, corte de lenha e construções em madeira.
-                </p>
+  <footer class="border-t border-white/10 bg-[#0A0A0A] py-8 text-center">
+    <p class="text-white/30 text-xs font-light">© 2026 Araguaia Máquinas. Todos os direitos reservados.</p>
+  </footer>
 
-                <!-- Box de Preço -->
-                <div class="border-y border-white/10 py-6 mb-6">
-                    <p class="text-white/40 text-sm line-through mb-1">De R$ 1.350,00</p>
-                    <div class="flex items-baseline gap-2 mb-2">
-                        <p class="font-anton text-4xl md:text-5xl brand-yellow">R$ 1.199,00</p>
-                        <span class="text-white/50 text-sm font-medium uppercase tracking-wider">no PIX</span>
-                    </div>
-                    <p class="text-white/60 text-sm font-light">ou <strong class="text-white">R$ 1.250,00</strong> em até <strong>10x de R$ 125,00</strong> sem juros no cartão</p>
-                </div>
+  <script>
+    function setActive(el){
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      const img = el.querySelector('img');
+      if(img){ document.getElementById('mainImage').src = img.src; }
+    }
 
-                <!-- Box de CEP -->
-                <div class="flex flex-col gap-2 mb-8">
-                    <label class="text-[11px] uppercase tracking-widest text-white/40">Calcular Frete e Prazo</label>
-                    <div class="flex gap-3">
-                        <input type="text" placeholder="Digite seu CEP" class="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-4 py-3 outline-none focus:border-[#FFB800] transition w-48">
-                        <button class="bg-white/10 hover:bg-white/15 text-white/80 text-sm font-medium px-5 rounded-lg transition">OK</button>
-                    </div>
-                    <a href="#" class="text-[#FFB800] text-xs hover:underline mt-1">Não sei meu CEP</a>
-                </div>
-
-                <!-- Botão de Compra -->
-                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20a%20Motosserra%20MS%20170." target="_blank" class="btn-buy w-full py-4 rounded-xl font-bold text-sm tracking-widest uppercase flex justify-center items-center gap-3">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                    Comprar via WhatsApp
-                </a>
-                
-                <div class="text-xs text-white/40 text-center mt-4">
-                    Compra 100% segura. Atendimento humano especializado.
-                </div>
-            </div>
-        </div>
-
-        <!-- Divisor -->
-        <div class="max-w-6xl mx-auto px-6"><hr class="border-white/5"></div>
-
-        <!-- Seções Adicionais de Informação -->
-        <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
-            
-            <!-- Coluna Principal (Descrição e Specs) -->
-            <div class="lg:col-span-2 space-y-16">
-                <!-- Descrição -->
-                <section>
-                    <h2 class="font-anton text-2xl tracking-wide text-white mb-6">DESCRIÇÃO DO PRODUTO</h2>
-                    <div class="text-white/60 font-light text-sm md:text-base leading-relaxed space-y-4">
-                        <p>Indicado para manter áreas externas organizadas, cortar lenha e realizar manutenções em sítios e fazendas. A Motosserra MS 170 entrega um excelente desempenho aliada a um peso extremamente baixo, facilitando o trabalho contínuo.</p>
-                        <p>Sua construção ergonômica com sistema anti-vibração garante conforto durante o manuseio, sendo a opção de entrada perfeita para quem busca qualidade profissional em aplicações domésticas ou agropecuárias de pequeno porte.</p>
-                    </div>
-                </section>
-
-                <!-- Atributos -->
-                <section>
-                    <h2 class="font-anton text-2xl tracking-wide text-white mb-2">ESPECIFICAÇÕES TÉCNICAS</h2>
-                    <p class="text-white/40 text-xs mb-6">As imagens são meramente ilustrativas. O design pode sofrer alterações de fábrica sem aviso prévio.</p>
-                    
-                    <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden p-1">
-                        <table class="specs-table">
-                            <tbody>
-                                <tr><td>Cilindrada (cm³)</td><td>30.1</td></tr>
-                                <tr><td>Potência (kW/cv)</td><td>1.3 / 1.7</td></tr>
-                                <tr><td>Peso (kg)</td><td>4.3</td></tr>
-                                <tr><td>Sabre (Tamanho sugerido - cm)</td><td>30 ou 35</td></tr>
-                                <tr><td>Corrente (Passo)</td><td>3/8" P</td></tr>
-                                <tr><td>Capacidade do tanque (l)</td><td>0.25</td></tr>
-                                <tr><td>Nível de pressão sonora dB(A)</td><td>100</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Coluna Lateral (Embalagem, Manuais, Reviews) -->
-            <div class="space-y-12">
-                <!-- Conteúdo -->
-                <section class="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h2 class="font-anton text-xl tracking-wide text-white mb-6">CONTEÚDO DA EMBALAGEM</h2>
-                    <ul class="package-list text-sm">
-                        <li>01 Motosserra MS 170</li>
-                        <li>01 Sabre Rollomatic E</li>
-                        <li>01 Corrente Picco Micro 3</li>
-                        <li>01 Capa de proteção do sabre</li>
-                        <li>01 Chave combinada</li>
-                        <li>01 Manual de instrução</li>
-                    </ul>
-                </section>
-
-                <!-- Manuais -->
-                <section>
-                    <h2 class="font-anton text-xl tracking-wide text-white mb-4">INSTRUÇÕES DE USO</h2>
-                    <a href="#" class="inline-flex items-center gap-2 text-[#FFB800] border border-[#FFB800]/50 hover:bg-[#FFB800]/10 px-5 py-3 rounded-lg text-sm font-medium transition">
-                        📄 Baixar Manual em PDF
-                    </a>
-                </section>
-
-                <!-- Avaliações Resumo -->
-                <section>
-                    <h2 class="font-anton text-xl tracking-wide text-white mb-4">AVALIAÇÕES</h2>
-                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                        <div class="text-[#FFB800] text-2xl tracking-widest mb-2">★★★★★</div>
-                        <p class="text-white text-3xl font-bold mb-1">4.9</p>
-                        <p class="text-white/40 text-xs">Baseado em 128 avaliações de clientes reais.</p>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer Simples -->
-    <footer class="border-t border-white/10 bg-[#0A0A0A] py-8 text-center">
-        <p class="text-white/30 text-xs font-light">© 2026 Araguaia Máquinas. Todos os direitos reservados. Clone Layout Baseado em Estrutura de Loja Online.</p>
-    </footer>
+    // Sticky CTA reveal on scroll
+    const stickyCta = document.getElementById('stickyCta');
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 500) { stickyCta.classList.add('show'); }
+      else { stickyCta.classList.remove('show'); }
+      lastY = y;
+    });
+  </script>
 
 </body>
 </html>
