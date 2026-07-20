@@ -1,52 +1,454 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soprador BGA 45 - Araguaia Máquinas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        body { background-color: #111111; color: #F8F8F8; font-family: 'DM Sans', sans-serif; }
-        .font-anton { font-family: 'Anton', sans-serif; }
-        .brand-yellow { color: #FFB800; }
-        .btn-buy { background: linear-gradient(135deg, #FFB800, #CC9200); color: #111; transition: all 0.3s ease; }
-        .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(255,184,0,0.6); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Soprador BG 50 - Araguaia Máquinas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style>
+  body { 
+    background-color: #0a0a0a; 
+    color: #F8F8F8; 
+    font-family: 'DM Sans', sans-serif; 
+    overflow-x: hidden;
+  }
+  .font-anton { font-family: 'Anton', sans-serif; }
+  .brand-yellow { color: #FFB800; }
+  .bg-brand-yellow { background: #FFB800; }
+
+  /* =========================================
+     CLASSES GLASSMORPHISM (EFEITO VIDRO)
+     ========================================= */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .glass:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-highlight {
+    background: linear-gradient(135deg, rgba(255, 184, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 184, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(255, 184, 0, 0.1);
+  }
+
+  .glass-input {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    color: white;
+  }
+  .glass-input:focus { border-color: #FFB800; outline: none; }
+
+  .glass-nav {
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Botoes */
+  .btn-buy { background: linear-gradient(135deg, #FFC933, #CC9200); color: #111; transition: transform .25s ease, box-shadow .25s ease; }
+  .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 12px 34px -10px rgba(255, 184, 0, .55); }
+  
+  /* Tabela de Specs no Glass */
+  .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .specs-table td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+  .specs-table tr:last-child td { border-bottom: none; }
+  .specs-table td:first-child { color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+  .specs-table td:last-child { font-weight: 500; text-align: right; color: #F8F8F8; }
+
+  .package-list { list-style: none; padding: 0; }
+  .package-list li { position: relative; padding-left: 28px; margin-bottom: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.7); font-size: 14px; }
+  .package-list li::before { content: "✔"; position: absolute; left: 0; top: 0; font-size: 12px; color: #FFB800; }
+
+  .thumb { transition: all .3s ease; cursor: pointer; }
+  .thumb.active { border-color: #FFB800; background: rgba(255, 184, 0, 0.1); }
+
+  .pulse-dot { animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 184, 0, .6); } 70% { box-shadow: 0 0 0 8px rgba(255, 184, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0); } }
+
+  .stock-bar-fill { background: linear-gradient(90deg, #FFB800, #FF7A00); }
+
+  .sticky-cta { transform: translateY(120%); transition: transform .35s ease; }
+  .sticky-cta.show { transform: translateY(0); }
+  ::selection { background: #FFB800; color: #111; }
+</style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
-    <nav class="w-full z-50 p-6 border-b border-white/10">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest font-medium">← Voltar para a Loja</a>
-            <span class="font-anton tracking-widest text-[15px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
+<body class="antialiased min-h-screen flex flex-col relative">
+
+  <!-- LUZES DE FUNDO (BACKGROUND GLOWS) - Cores Laranja e Amarelo remetendo ao Outono/Folhas Secas -->
+  <div class="fixed top-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#FF7A00] opacity-[0.06] blur-[120px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-[10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-[#FFB800] opacity-[0.05] blur-[120px] pointer-events-none -z-10"></div>
+
+  <!-- Top Bar -->
+  <div class="bg-[#FFB800] text-[#111] text-xs text-center py-2 font-semibold tracking-wide flex items-center justify-center gap-2">
+    <span class="w-1.5 h-1.5 rounded-full bg-[#111] pulse-dot"></span>
+    Restam poucas unidades no estoque — Frete grátis para Sul, Sudeste e Centro-Oeste
+  </div>
+
+  <!-- Navegação Glass -->
+  <nav class="w-full z-50 p-5 sticky top-0 glass-nav">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
+        ← Voltar
+      </a>
+      <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
+      <div class="flex items-center gap-4 text-white/60 text-sm font-medium">
+        <span class="hidden md:inline hover:text-white cursor-pointer transition">Entrar</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="max-w-6xl mx-auto w-full px-6 py-6 text-xs font-medium text-white/40 tracking-wider uppercase">
+    <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
+    <a href="#" class="hover:text-[#FFB800] transition">Jardim & Limpeza</a> <span class="mx-2">/</span>
+    <a href="#" class="hover:text-[#FFB800] transition">Sopradores</a> <span class="mx-2">/</span>
+    <span class="text-white/90">BG 50</span>
+  </div>
+
+  <main class="flex-grow pb-24">
+    <!-- Produto Principal -->
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+
+      <!-- Coluna da Galeria -->
+      <div class="flex flex-col gap-5">
+        <!-- Card Vidro Principal Imagem -->
+        <div class="glass rounded-3xl relative aspect-[4/3] md:aspect-square flex items-center justify-center p-8 overflow-hidden group">
+          
+          <div class="absolute inset-0 bg-gradient-to-tr from-[#FFB800]/5 to-transparent pointer-events-none z-0"></div>
+
+          <span class="absolute top-5 left-5 text-[10px] font-bold uppercase tracking-widest bg-[#F8F8F8] text-[#111] py-1.5 px-3 rounded-md z-30 shadow-lg">Leveza e Potência</span>
+          <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-widest glass text-white py-1.5 px-3 rounded-md z-30">4.9 ★</span>
+          
+          <!-- Imagens puxadas da nova pasta no Git (BG 50) -->
+          <img id="mainImage" src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201407.webp" alt="Soprador a combustão BG 50" class="w-full h-full max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 z-10 relative">
         </div>
-    </nav>
-    <main class="flex-grow flex items-center py-16 px-6">
-        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="relative aspect-square flex items-center justify-center bg-gradient-to-tr from-white/5 to-transparent rounded-3xl border border-white/10 p-8">
-                <span class="absolute top-6 left-6 text-[10px] font-bold uppercase tracking-widest bg-[#F8F8F8] text-[#111] py-1.5 px-3 rounded-md z-10">Inovação a Bateria</span>
-                <img src="https://buildix-user-images.s3.us-east-2.amazonaws.com/ai-generated/75c0957e-b721-4512-9e63-ef9f24783a27.webp" alt="Soprador a Bateria BGA 45" class="w-full h-full object-contain drop-shadow-2xl">
-            </div>
-            <div class="flex flex-col">
-                <h1 class="font-anton text-5xl md:text-7xl tracking-wide mb-4">SOPRADOR BGA 45</h1>
-                <p class="text-white/50 text-lg font-light leading-relaxed mb-8">Tecnologia de íons de lítio com força de furacão. Limpe seu quintal sem se preocupar com cabos, sem necessidade de gasolina e sem barulho excessivo.</p>
-                <div class="border-l-2 border-[#FFB800]/30 pl-4 mb-8">
-                    <ul class="text-white/70 font-light space-y-3">
-                        <li>✔️ Bateria de 18V integrada ao equipamento</li>
-                        <li>✔️ Extremamente leve e ergonômico</li>
-                        <li>✔️ Ultra silencioso (não exige protetor auricular)</li>
-                        <li>✔️ Indicador de carga em LED na lateral</li>
-                    </ul>
-                </div>
-                <div class="mb-8 p-6 bg-white/5 border border-white/10 rounded-2xl">
-                    <p class="font-anton text-5xl brand-yellow mb-2">R$ 899,00</p>
-                    <p class="text-white/50 text-sm">ou 10x de R$ 89,90 sem juros no cartão</p>
-                </div>
-                <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Soprador%20BGA%2045." target="_blank" class="btn-buy w-full py-5 rounded-full font-bold text-xs tracking-widest uppercase flex justify-center items-center gap-3">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> Comprar via WhatsApp
-                </a>
-            </div>
+        
+        <!-- Grid de 3 colunas (Miniaturas de Vidro) -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="glass thumb active aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
+            <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201407.webp" class="w-full h-full object-cover rounded-xl" alt="Vista 1">
+          </div>
+          <div class="glass thumb aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
+             <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201408.webp" class="w-full h-full object-cover rounded-xl" alt="Vista 2">
+          </div>
+          <div class="glass thumb aspect-square rounded-2xl flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
+             <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201409.webp" class="w-full h-full object-cover rounded-xl" alt="Detalhe">
+          </div>
         </div>
-    </main>
+
+        <!-- Trust badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
+            <span class="text-xl">🛡️</span>
+            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Garantia<br>de fábrica</span>
+          </div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
+            <span class="text-xl">🚚</span>
+            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Envio em<br>24h úteis</span>
+          </div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
+            <span class="text-xl">📄</span>
+            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">Nota fiscal<br>emitida</span>
+          </div>
+          <div class="glass rounded-2xl py-4 px-2 text-center flex flex-col items-center gap-2">
+            <span class="text-xl">↩️</span>
+            <span class="text-[9px] text-white/60 uppercase tracking-widest leading-tight">7 dias para<br>troca</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna Detalhes e Compra -->
+      <div class="flex flex-col">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-white/40 text-xs font-medium tracking-widest uppercase">Ref: 4229-011-1725</span>
+          <span class="text-[11px] text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/10">112 avaliações</span>
+        </div>
+        
+        <h1 class="font-anton text-5xl md:text-6xl tracking-wide mb-4 text-white drop-shadow-lg">SOPRADOR BG 50</h1>
+
+        <div class="flex items-center gap-2 mb-6">
+          <span class="text-[#FFB800] text-sm tracking-widest">★★★★★</span>
+          <span class="text-white/50 text-xs">4.9/5 — recomendada por 97% dos clientes</span>
+        </div>
+
+        <p class="text-white/70 text-sm md:text-base font-light leading-relaxed mb-6">
+          A força de um furacão nas suas mãos. O soprador a combustão mais leve da STIHL, ideal para a limpeza rápida de folhas secas, grama cortada e pequenos resíduos em jardins e calçadas. Agilidade sem abrir mão da potência.
+        </p>
+
+        <!-- Benefícios rápidos -->
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">🪶 Apenas 3.6 kg</span>
+          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">💨 700 m³/h de vazão</span>
+          <span class="text-[11px] glass text-white px-4 py-2 rounded-full uppercase tracking-wider">⚡ Partida fácil</span>
+        </div>
+
+        <!-- Preço em Highlight Glass -->
+        <div class="glass-highlight rounded-3xl p-6 md:p-8 mb-6 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-[#FFB800] opacity-10 rounded-full blur-3xl -z-10"></div>
+          
+          <p class="text-white/40 text-sm line-through mb-1">De R$ 1.150,00</p>
+          <div class="flex items-baseline gap-3 mb-2 flex-wrap">
+            <p class="font-anton text-5xl md:text-6xl brand-yellow drop-shadow-md">R$ 999,00</p>
+            <span class="text-white/60 text-sm font-medium uppercase tracking-wider">no PIX</span>
+            <span class="text-[11px] bg-[#FFB800] text-[#111] font-bold px-2 py-1 rounded-md shadow-lg">-13%</span>
+          </div>
+          <p class="text-white/70 text-sm font-light mt-3 border-t border-white/10 pt-3">ou <strong class="text-white">R$ 1.050,00</strong> em até <strong>10x de R$ 105,00</strong> sem juros no cartão</p>
+        </div>
+
+        <!-- Estoque -->
+        <div class="mb-8 px-2">
+          <div class="flex justify-between text-xs text-white/50 mb-2 uppercase tracking-wide">
+            <span>Estoque disponível</span>
+            <span class="text-[#FFB800] font-semibold">Últimas 3 unidades</span>
+          </div>
+          <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+            <div class="stock-bar-fill h-full rounded-full shadow-[0_0_10px_#FFB800]" style="width:10%"></div>
+          </div>
+        </div>
+
+        <!-- CEP COM FUNÇÃO -->
+        <div class="flex flex-col gap-2 mb-10">
+          <label class="text-[11px] uppercase tracking-widest text-white/50 ml-1">Calcular frete e prazo</label>
+          <div class="flex gap-3">
+            <input type="text" id="cepInput" maxlength="9" placeholder="00000-000" class="glass-input rounded-xl px-4 py-3.5 outline-none transition w-full md:w-56 text-sm tracking-widest">
+            <button id="btnFrete" onclick="calcularFrete()" class="glass hover:bg-white/10 text-white font-medium px-6 rounded-xl transition shadow-lg">OK</button>
+          </div>
+          <!-- Caixa que vai aparecer o resultado -->
+          <div id="freteResult" class="hidden glass rounded-xl p-4 mt-2 text-sm text-white/80 transition-all"></div>
+        </div>
+
+        <!-- CTA Principal: Somente WhatsApp -->
+        <div class="flex flex-col gap-4">
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Soprador%20BG%2050." target="_blank" class="btn-buy w-full py-4 md:py-5 rounded-2xl font-bold text-sm tracking-widest uppercase flex justify-center items-center gap-3 shadow-xl">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Comprar via WhatsApp
+          </a>
+        </div>
+
+        <div class="text-[11px] text-white/40 text-center mt-5 uppercase tracking-widest">
+          🔒 Compra 100% segura · Atendimento especializado
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 mt-16 mb-8">
+      <hr class="border-white/10">
+    </div>
+
+    <!-- Seções Adicionais -->
+    <div class="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
+
+      <!-- Esquerda: Textos e Tabelas -->
+      <div class="lg:col-span-2 space-y-12">
+        <!-- Descrição Glass Card -->
+        <section class="glass rounded-3xl p-8 md:p-10 relative overflow-hidden">
+          <div class="absolute top-[-50px] right-[-50px] w-40 h-40 bg-white/5 rounded-full blur-3xl -z-10"></div>
+          <h2 class="font-anton text-3xl tracking-wide text-white mb-6">DESCRIÇÃO DO PRODUTO</h2>
+          <div class="text-white/70 font-light text-sm md:text-base leading-relaxed space-y-5">
+            <p>O Soprador STIHL BG 50 é a escolha certa para quem busca eficiência na limpeza de áreas residenciais. Seu diferencial é o baixíssimo peso, permitindo que qualquer pessoa da casa utilize o equipamento sem esforço nos braços.</p>
+            <p>Equipado com o prático comando unificado, todos os controles do motor estão integrados na mesma empunhadura, garantindo manuseio seguro, simples e extremamente intuitivo.</p>
+          </div>
+        </section>
+
+        <!-- Especificações -->
+        <section>
+          <h2 class="font-anton text-3xl tracking-wide text-white mb-2 px-2">ESPECIFICAÇÕES TÉCNICAS</h2>
+          <p class="text-white/40 text-xs mb-6 px-2">As imagens são meramente ilustrativas. O design pode sofrer alterações.</p>
+          <div class="glass rounded-3xl overflow-hidden p-2">
+            <table class="specs-table">
+              <tbody>
+                <tr><td>Cilindrada (cm³)</td><td>27.2</td></tr>
+                <tr><td>Potência (kW/cv)</td><td>0.7 / 1.0</td></tr>
+                <tr><td>Peso (kg)</td><td>3.6</td></tr>
+                <tr><td>Vazão máxima de ar (m³/h)</td><td>700</td></tr>
+                <tr><td>Velocidade máxima do ar (m/s)</td><td>60</td></tr>
+                <tr><td>Capacidade do tanque (l)</td><td>0.43</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Comparativo -->
+        <section>
+          <h2 class="font-anton text-3xl tracking-wide text-white mb-6 px-2">QUAL VERSÃO É IDEAL PRA VOCÊ?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            <div class="glass-highlight rounded-3xl p-8 relative overflow-hidden">
+              <span class="absolute top-6 right-6 bg-[#FFB800] text-[#111] text-[10px] font-bold uppercase px-3 py-1 rounded-full shadow-lg">Você está aqui</span>
+              <p class="font-anton text-2xl tracking-wide mb-1 mt-2 text-white">BG 50</p>
+              <p class="text-white/60 text-xs mb-5 uppercase tracking-wider">Gasolina / Uso Doméstico</p>
+              <p class="font-anton text-3xl brand-yellow mb-5 drop-shadow-md">R$ 999,00</p>
+              <ul class="text-sm text-white/70 space-y-2.5 font-light">
+                <li>• Motor a combustão</li>
+                <li>• Extremamente leve (3.6 kg)</li>
+                <li>• Ideal para limpeza rápida</li>
+              </ul>
+            </div>
+
+            <div class="glass rounded-3xl p-8">
+              <p class="font-anton text-2xl tracking-wide mb-1 mt-2 text-white/50">BGA 45</p>
+              <p class="text-white/40 text-xs mb-5 uppercase tracking-wider">A Bateria / Silencioso</p>
+              <p class="font-anton text-3xl text-white/50 mb-5">R$ 899,00</p>
+              <ul class="text-sm text-white/40 space-y-2.5 font-light">
+                <li>• Bateria de 18V Integrada</li>
+                <li>• Ultra silencioso (zero ruído)</li>
+                <li>• Não precisa de gasolina</li>
+              </ul>
+            </div>
+            
+          </div>
+        </section>
+      </div>
+
+      <!-- Direita: Embalagem e Avaliações -->
+      <div class="space-y-8">
+        <section class="glass rounded-3xl p-8">
+          <h2 class="font-anton text-2xl tracking-wide text-white mb-6">CONTEÚDO DA EMBALAGEM</h2>
+          <ul class="package-list">
+            <li>01 Soprador a Combustão BG 50</li>
+            <li>01 Tubo de sopro</li>
+            <li>01 Bico redondo standard</li>
+            <li>01 Chave combinada</li>
+            <li>01 Manual de instrução</li>
+          </ul>
+        </section>
+
+        <section class="glass rounded-3xl p-8 text-center flex flex-col items-center justify-center">
+          <h2 class="font-anton text-2xl tracking-wide text-white mb-4 w-full text-left">AVALIAÇÕES</h2>
+          <div class="text-[#FFB800] text-3xl tracking-widest mb-3 drop-shadow-[0_0_8px_rgba(255,184,0,0.5)]">★★★★★</div>
+          <p class="text-white text-5xl font-anton tracking-wide mb-2">4.9</p>
+          <p class="text-white/40 text-xs uppercase tracking-widest">Baseado em 112 avaliações reais</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Sticky CTA mobile Glass -->
+  <div id="stickyCta" class="sticky-cta fixed bottom-0 left-0 right-0 z-50 glass-nav p-5 flex items-center justify-between gap-4 md:hidden border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+    <div>
+      <p class="text-white/50 text-[10px] uppercase tracking-widest mb-1">Soprador BG 50</p>
+      <p class="font-anton text-2xl brand-yellow leading-none">R$ 999,00</p>
+    </div>
+    <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Gostaria%20de%20comprar%20o%20Soprador%20BG%2050." target="_blank" class="btn-buy px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg flex items-center gap-2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      Comprar
+    </a>
+  </div>
+
+  <footer class="border-t border-white/5 bg-black/50 backdrop-blur-md py-10 text-center">
+    <p class="text-white/30 text-xs font-light uppercase tracking-widest">© 2026 Araguaia Máquinas. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Função para as miniaturas
+    function setActive(el){
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      const img = el.querySelector('img');
+      if(img){ document.getElementById('mainImage').src = img.src; }
+    }
+
+    // Botão flutuante mobile
+    const stickyCta = document.getElementById('stickyCta');
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 500) { stickyCta.classList.add('show'); }
+      else { stickyCta.classList.remove('show'); }
+      lastY = y;
+    });
+
+    // ==========================================
+    // FUNÇÃO DE CÁLCULO DE FRETE (VIACEP)
+    // ==========================================
+
+    const cepInput = document.getElementById('cepInput');
+    
+    // Máscara automática enquanto digita o CEP
+    cepInput.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 5) {
+        value = value.replace(/^(\d{5})(\d)/, '$1-$2');
+      }
+      e.target.value = value;
+    });
+
+    // Ação do Botão OK
+    async function calcularFrete() {
+      const btnFrete = document.getElementById('btnFrete');
+      const resultDiv = document.getElementById('freteResult');
+      let cep = cepInput.value.replace(/\D/g, '');
+
+      if (cep.length !== 8) {
+        resultDiv.innerHTML = '<span class="text-red-400">Por favor, digite um CEP válido (8 dígitos).</span>';
+        resultDiv.classList.remove('hidden');
+        return;
+      }
+
+      btnFrete.innerText = '...';
+      btnFrete.disabled = true;
+      resultDiv.classList.add('hidden');
+
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await response.json();
+
+        if (data.erro) {
+          resultDiv.innerHTML = '<span class="text-red-400">CEP não encontrado. Verifique os números.</span>';
+        } else {
+          const uf = data.uf;
+          const cidade = data.localidade;
+          
+          const freteGratisUF = ['PR', 'SC', 'RS', 'SP', 'RJ', 'MG', 'ES', 'MS', 'MT', 'GO', 'DF'];
+          
+          let valorFrete, prazo;
+
+          if (freteGratisUF.includes(uf)) {
+            valorFrete = '<span class="text-[#FFB800] font-bold text-base tracking-wider uppercase">Grátis</span>';
+            prazo = '4 a 7 dias úteis';
+          } else {
+            valorFrete = '<span class="text-white font-bold tracking-wider">R$ 68,90</span>';
+            prazo = '9 a 15 dias úteis';
+          }
+
+          resultDiv.innerHTML = `
+            <div class="flex flex-col gap-2">
+              <span class="text-[10px] text-white/50 uppercase tracking-widest border-b border-white/10 pb-2">${cidade} - ${uf}</span>
+              <div class="flex justify-between items-center mt-1">
+                <span class="text-sm font-light">Transportadora Padrão</span>
+                <div class="text-right flex flex-col">
+                  ${valorFrete}
+                  <span class="text-[10px] text-white/40 uppercase tracking-widest mt-0.5">Chega em ${prazo}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      } catch (error) {
+        resultDiv.innerHTML = '<span class="text-red-400">Erro ao buscar CEP. Tente novamente mais tarde.</span>';
+      } finally {
+        resultDiv.classList.remove('hidden'); 
+        btnFrete.innerText = 'OK';            
+        btnFrete.disabled = false;
+      }
+    }
+  </script>
 </body>
 </html>
