@@ -56,7 +56,7 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col relative">
 
-  <!-- Top Bar: urgência + benefício -->
+  <!-- Top Bar -->
   <div class="bg-[#FFB800] text-[#111] text-xs text-center py-2 font-semibold tracking-wide flex items-center justify-center gap-2">
     <span class="w-1.5 h-1.5 rounded-full bg-[#111] pulse-dot"></span>
     Restam poucas unidades no estoque — Frete grátis para Sul, Sudeste e Centro-Oeste
@@ -65,7 +65,7 @@
   <!-- Navegação -->
   <nav class="w-full z-50 p-5 border-b border-white/10 bg-[#111111]/90 backdrop-blur-md sticky top-0">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="../index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
+      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
         ← Voltar
       </a>
       <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
@@ -80,14 +80,13 @@
 
   <!-- Breadcrumb -->
   <div class="max-w-6xl mx-auto w-full px-6 py-4 text-xs font-medium text-white/40 tracking-wider uppercase">
-    <a href="../index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
+    <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
     <a href="#" class="hover:text-[#FFB800] transition">Agro & Jardim</a> <span class="mx-2">/</span>
     <a href="#" class="hover:text-[#FFB800] transition">Motosserras</a> <span class="mx-2">/</span>
     <span class="text-white/80">MS 172</span>
   </div>
 
   <main class="flex-grow pb-24">
-
     <!-- Produto Principal -->
     <div class="max-w-6xl mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
 
@@ -97,28 +96,24 @@
           <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest bg-[#FFB800] text-[#111] py-1.5 px-3 rounded-md z-10">Lançamento</span>
           <span class="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest bg-white/10 text-white py-1.5 px-3 rounded-md z-10 backdrop-blur-sm">4.9 ★</span>
           
-          <!-- Imagem Principal Atualizada -->
-          <img id="mainImage" src="./Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra a Combustão MS 172" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+          <!-- Imagem Principal Puxada do GIT (COM A PASTA) -->
+          <img id="mainImage" src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra MS 172" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
         </div>
         
-        <!-- Grid de 3 colunas para as 3 fotos enviadas -->
+        <!-- Grid de 3 colunas -->
         <div class="grid grid-cols-3 gap-4">
-          
-          <!-- Foto 1 (WebP) -->
+          <!-- Foto 1 -->
           <div class="thumb active aspect-square rounded-xl bg-white/5 flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
-            <img src="./Motosserra_a_combustão_MS_172.png_202607201330.webp" class="w-full h-full object-cover rounded-lg" alt="Motosserra MS 172 Vista 1">
+            <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" class="w-full h-full object-cover rounded-lg" alt="Vista 1">
           </div>
-          
-          <!-- Foto 2 (WebP) -->
+          <!-- Foto 2 -->
           <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
-             <img src="./Motosserra_a_combustão_MS_172.png_202607201335.webp" class="w-full h-full object-cover rounded-lg" alt="Motosserra MS 172 Vista 2">
+             <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201335.webp" class="w-full h-full object-cover rounded-lg" alt="Vista 2">
           </div>
-          
-          <!-- Foto 3 (Jpeg) -->
+          <!-- Foto 3 -->
           <div class="thumb aspect-square rounded-xl bg-white/5 flex items-center justify-center p-2 overflow-hidden" onclick="setActive(this)">
-             <img src="./Motosserra_a_combustão_MS_172.png_202607201337.jpeg" class="w-full h-full object-cover rounded-lg" alt="Motosserra MS 172 Detalhe">
+             <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201337.jpeg" class="w-full h-full object-cover rounded-lg" alt="Detalhe">
           </div>
-
         </div>
 
         <!-- Trust badges -->
@@ -222,7 +217,6 @@
     <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
 
       <div class="lg:col-span-2 space-y-16">
-
         <!-- Descrição -->
         <section>
           <h2 class="font-anton text-2xl tracking-wide text-white mb-6">DESCRIÇÃO DO PRODUTO</h2>
@@ -277,39 +271,10 @@
             </div>
           </div>
         </section>
-
-        <!-- FAQ -->
-        <section>
-          <h2 class="font-anton text-2xl tracking-wide text-white mb-6">PERGUNTAS FREQUENTES</h2>
-          <div class="space-y-3">
-            <details class="bg-white/5 border border-white/10 rounded-xl p-4 group">
-              <summary class="flex justify-between items-center text-sm font-medium text-white/85">
-                A motosserra já vem montada?
-                <span class="faq-icon transition-transform text-[#FFB800] text-lg">+</span>
-              </summary>
-              <p class="text-white/50 text-sm font-light mt-3 leading-relaxed">Sim, o sabre e a corrente já vêm instalados de fábrica. Você só precisa abastecer com a mistura de combustível recomendada no manual.</p>
-            </details>
-            <details class="bg-white/5 border border-white/10 rounded-xl p-4 group">
-              <summary class="flex justify-between items-center text-sm font-medium text-white/85">
-                Qual o prazo de entrega?
-                <span class="faq-icon transition-transform text-[#FFB800] text-lg">+</span>
-              </summary>
-              <p class="text-white/50 text-sm font-light mt-3 leading-relaxed">O envio ocorre em até 24h úteis após a confirmação do pagamento. O prazo de entrega varia conforme o CEP informado no cálculo de frete.</p>
-            </details>
-            <details class="bg-white/5 border border-white/10 rounded-xl p-4 group">
-              <summary class="flex justify-between items-center text-sm font-medium text-white/85">
-                Tem garantia? Como funciona a troca?
-                <span class="faq-icon transition-transform text-[#FFB800] text-lg">+</span>
-              </summary>
-              <p class="text-white/50 text-sm font-light mt-3 leading-relaxed">Sim, garantia de fábrica contra defeitos e 7 dias corridos para troca ou devolução, conforme o Código de Defesa do Consumidor.</p>
-            </details>
-          </div>
-        </section>
       </div>
 
       <!-- Coluna Lateral -->
       <div class="space-y-12">
-
         <section class="bg-white/5 border border-white/10 rounded-2xl p-6">
           <h2 class="font-anton text-xl tracking-wide text-white mb-6">CONTEÚDO DA EMBALAGEM</h2>
           <ul class="package-list">
@@ -323,37 +288,11 @@
         </section>
 
         <section>
-          <h2 class="font-anton text-xl tracking-wide text-white mb-4">INSTRUÇÕES DE USO</h2>
-          <a href="#" class="inline-flex items-center gap-2 text-[#FFB800] border border-[#FFB800]/50 hover:bg-[#FFB800]/10 px-5 py-3 rounded-lg text-sm font-medium transition">
-            📄 Baixar manual em PDF
-          </a>
-        </section>
-
-        <!-- Avaliações com depoimentos -->
-        <section>
           <h2 class="font-anton text-xl tracking-wide text-white mb-4">AVALIAÇÕES</h2>
           <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center mb-4">
             <div class="text-[#FFB800] text-2xl tracking-widest mb-2">★★★★★</div>
             <p class="text-white text-3xl font-bold mb-1">4.9</p>
             <p class="text-white/40 text-xs">Baseado em 128 avaliações de clientes reais</p>
-          </div>
-          <div class="space-y-3">
-            <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="text-[#FFB800] text-xs">★★★★★</span>
-                <span class="text-[9px] text-white/30 uppercase">Compra verificada</span>
-              </div>
-              <p class="text-white/60 text-xs font-light leading-relaxed">"Leve, moderna e fácil de dar partida, resolveu o corte de lenha aqui em casa sem complicação."</p>
-              <p class="text-white/30 text-[10px] mt-2">— R. Almeida</p>
-            </div>
-            <div class="bg-white/5 border border-white/10 rounded-xl p-4">
-              <div class="flex items-center justify-between mb-1.5">
-                <span class="text-[#FFB800] text-xs">★★★★★</span>
-                <span class="text-[9px] text-white/30 uppercase">Compra verificada</span>
-              </div>
-              <p class="text-white/60 text-xs font-light leading-relaxed">"Entrega rápida e produto muito bem embalado. A evolução do motor faz diferença."</p>
-              <p class="text-white/30 text-[10px] mt-2">— T. Ferreira</p>
-            </div>
           </div>
         </section>
       </div>
@@ -393,6 +332,5 @@
       lastY = y;
     });
   </script>
-
 </body>
 </html>
