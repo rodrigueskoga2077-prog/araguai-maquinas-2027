@@ -24,6 +24,7 @@
         html {
             overscroll-behavior-y: none;
             background-color: #111111;
+            scroll-behavior: smooth; /* Adicionado para rolagem suave */
         }
 
         body {
@@ -42,7 +43,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             opacity: 0.04; z-index: 9998; pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            transform: translateZ(0); /* Força aceleração de hardware */
+            transform: translateZ(0); 
         }
 
         #hero-canvas {
@@ -147,9 +148,29 @@
         .cta-btn-outline:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.45); color: #fff; box-shadow: 0 10px 30px -10px rgba(255,255,255,0.1); }
 
         #produtos { position: relative; z-index: 40; margin-top: -100vh; margin-top: -100svh; padding-top: 15vh; background: linear-gradient(to bottom, transparent, #111111 15vh, #111111 100%); }
-        .product-card { opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1), border 0.3s ease, box-shadow 0.3s ease; cursor: default; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border: 0.5px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.1); will-change: transform, opacity; display: flex; flex-direction: column; overflow: hidden; border-radius: 20px; position: relative; }
+        
+        /* CORREÇÃO DO CARD DO PRODUTO: Adicionado scroll-margin-top e efeito de :target */
+        .product-card { 
+            scroll-margin-top: 130px; /* Garante que ao voltar, o produto não fique escondido sob o menu */
+            opacity: 0; transform: translate3d(0, 40px, 0); 
+            transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1), border 0.3s ease, box-shadow 0.3s ease; 
+            cursor: default; background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); 
+            backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); 
+            border: 0.5px solid rgba(255,255,255,0.08); box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.1); 
+            will-change: transform, opacity; display: flex; flex-direction: column; overflow: hidden; border-radius: 20px; position: relative; 
+        }
         .product-card:hover { transform: translate3d(0, -6px, 0) !important; border-color: rgba(255,184,0,0.35); box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 0 rgba(255,184,0,0.3); }
         .product-card.revealed { opacity: 1; transform: translate3d(0,0,0); }
+        
+        /* Destaque ao voltar do produto clicado */
+        .product-card:target {
+            opacity: 1 !important; transform: translate3d(0,0,0) !important;
+            border-color: rgba(255,184,0,0.7);
+            box-shadow: 0 0 30px rgba(255,184,0,0.15), inset 0 1px 0 0 rgba(255,184,0,0.3);
+            animation: highlight-pulse 2s ease-out;
+        }
+        @keyframes highlight-pulse { 0% { box-shadow: 0 0 40px rgba(255,184,0,0.5); } 100% { box-shadow: 0 0 30px rgba(255,184,0,0.15); } }
+
         .product-image { filter: drop-shadow(0px 16px 24px rgba(0, 0, 0, 0.6)); transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
         .product-card:hover .product-image { transform: scale(1.08); }
         .product-badge { position: absolute; top: 16px; left: 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 6px; z-index: 5; }
@@ -277,7 +298,6 @@
             pointer-events: none;
         }
         
-        /* CORREÇÃO AQUI: ÍCONE DO WHATSAPP VERDE (#25D366) */
         .whatsapp-float svg { width: 46%; height: 46%; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); color: #25D366; }
         
         .whatsapp-float:hover {
@@ -449,8 +469,8 @@
 
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;">
 
-                <!-- Motosserra -->
-                <div class="product-card">
+                <!-- Motosserra - ID ADICIONADO AQUI -->
+                <div class="product-card" id="produto-motosserra">
                     <span class="product-badge badge-hot">Campeã de vendas</span>
                     <a href="motosserra.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-24">
                         <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra a Combustão MS 172" class="product-image w-full h-full object-contain">
@@ -475,8 +495,8 @@
                     </div>
                 </div>
 
-                <!-- Roçadeira -->
-                <div class="product-card">
+                <!-- Roçadeira - ID ADICIONADO AQUI -->
+                <div class="product-card" id="produto-rocadeira">
                     <span class="product-badge badge-pro">Uso profissional</span>
                     <a href="rocadeira.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-24">
                         <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201341.webp" alt="Roçadeira a Combustão FS 120" class="product-image w-full h-full object-contain">
@@ -501,8 +521,8 @@
                     </div>
                 </div>
 
-                <!-- Lavadora -->
-                <div class="product-card">
+                <!-- Lavadora - ID ADICIONADO AQUI -->
+                <div class="product-card" id="produto-lavadora">
                     <a href="lavadora.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-10">
                         <div class="w-full h-full flex items-center justify-center" style="transform: scale(1.35);">
                             <img src="./Captura_de_tela_2026-07-20_170705.png_202607201734.webp" alt="Lavadora de Alta Pressão RE 90 PLUS" class="product-image w-full h-full object-contain">
@@ -528,8 +548,8 @@
                     </div>
                 </div>
 
-                <!-- Soprador -->
-                <div class="product-card">
+                <!-- Soprador - ID ADICIONADO AQUI -->
+                <div class="product-card" id="produto-soprador">
                     <span class="product-badge badge-new">Inovação a bateria</span>
                     <a href="soprador.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-24">
                         <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201407.webp" alt="Soprador a combustão BG 50" class="product-image w-full h-full object-contain">
@@ -787,7 +807,6 @@
                 </div>
                 <div style="margin-bottom:28px;"><label class="contact-form-label">Conte o que você precisa</label><textarea id="form-msg" class="contact-form-input" placeholder="Detalhes do seu projeto ou produto desejado..."></textarea></div>
                 
-                <!-- AVISO DE LGPD ADICIONADO AQUI -->
                 <p style="font-size: 10px; color: rgba(255,255,255,0.3); margin-bottom: 16px; line-height: 1.4;">
                     Ao solicitar um orçamento, você concorda com a nossa <a href="#" style="color:#FFB800;text-decoration:underline;">Política de Privacidade</a> e o uso de seus dados para contato.
                 </p>
@@ -824,7 +843,6 @@
                 </div>
             </div>
 
-            <!-- RODAPÉ ATUALIZADO COM OS LINKS DE POLÍTICA DE PRIVACIDADE E TERMOS DE USO -->
             <div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:24px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;">
                 <div style="display:flex;gap:16px;">
                     <a href="#" style="font-size:11px;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#FFB800'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">Política de Privacidade</a>
@@ -832,7 +850,6 @@
                 </div>
                 <p style="font-size:11px;color:rgba(255,255,255,0.15);line-height:1.6;margin:0;">CNPJ: 10.655.510/0001-50<br>© 2026 Araguaia Máquinas. Todos os direitos reservados.</p>
             </div>
-
         </div>
     </footer>
 
@@ -929,7 +946,6 @@
         }
 
         function render(fraction) {
-            // Se já passou do final e não mudou nada, não desenhar (Salva memória GPU/CPU)
             if (fraction >= 0.99 && lastRenderedFraction >= 0.99) return;
             
             const prog  = Math.min(1, fraction / 0.9) * (FRAME_COUNT - 1);
@@ -940,7 +956,6 @@
             
             if (!bmpA) return;
 
-            // Limpa o canvas para garantir que o iOS não stack memória
             ctx.clearRect(0, 0, cW, cH);
             
             ctx.globalAlpha = 1;
@@ -1003,7 +1018,6 @@
             lastScrollY      = curScrollY;
             const delta = targetFraction - currentFraction;
 
-            // Só atualiza os visuais pesados do Hero se realmente houver rolagem
             if (Math.abs(delta) > 0.00005) {
                 const base = IS_MOBILE ? 0.12 : 0.08;
                 const lerp = Math.min(IS_MOBILE ? 0.35 : 0.15, base + velocity * 0.0008);
@@ -1015,8 +1029,6 @@
                 applyText(currentFraction);
             }
 
-            // OTIMIZAÇÃO: Executar getBoundingClientRect apenas quando a sessão "Como Comprar" estiver visível.
-            // Elimina o "Layout Thrashing" que crashava o iOS no scroll rápido.
             if (isProcessSectionVisible) {
                 const processSection = document.getElementById('como-comprar');
                 if (processSection) {
@@ -1092,7 +1104,6 @@
             const queue = [];
             for (let i = 0; i < FRAME_COUNT; i++) queue.push(i);
             
-            // Limitador dinâmico de resolução para salvar RAM no iOS
             const devicePixelRatio = Math.min(window.devicePixelRatio || 1, IS_MOBILE ? 1.5 : 2);
             let memWidth = window.innerWidth > 0 ? Math.round(window.innerWidth * devicePixelRatio) : 1080;
 
@@ -1105,7 +1116,6 @@
                         const blob = await res.blob();
                         
                         let bmpOpts = { premultiplyAlpha: 'none', colorSpaceConversion: 'none' };
-                        // OTIMIZAÇÃO CRÍTICA PARA iOS/SAFARI: Comprime dinamicamente os bitMaps.
                         if (IS_MOBILE) {
                            bmpOpts.resizeWidth = memWidth; 
                         }
@@ -1133,12 +1143,11 @@
                 loaderEl.style.display = 'none';
                 initReveal();
                 initCounters();
-                loop(); // Loop inicializado APENAS após todo o carregamento do DOM
+                loop(); 
             }, 600);
         }
 
         function initReveal() {
-            // OTIMIZAÇÃO: Centraliza TODAS as verificações visuais no IntersectionObserver.
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (e.isIntersecting) { 
@@ -1159,7 +1168,6 @@
                 io.observe(el);
             });
             
-            // Observer isolado para liberar o processamento contínuo da linha de passos.
             const processIo = new IntersectionObserver((entries) => {
                 isProcessSectionVisible = entries[0].isIntersecting;
             }, { threshold: 0 });
