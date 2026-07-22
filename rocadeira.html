@@ -22,9 +22,6 @@
   .brand-yellow { color: #FFB800; }
   .bg-brand-yellow { background: #FFB800; }
 
-  /* =========================================
-     CLASSES GLASSMORPHISM (EFEITO VIDRO)
-     ========================================= */
   .glass {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
@@ -32,12 +29,10 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   }
-  
   .glass:hover {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
-
   .glass-highlight {
     background: linear-gradient(135deg, rgba(255, 184, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(16px);
@@ -45,7 +40,6 @@
     border: 1px solid rgba(255, 184, 0, 0.3);
     box-shadow: 0 8px 32px 0 rgba(255, 184, 0, 0.1);
   }
-
   .glass-input {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -53,19 +47,15 @@
     color: white;
   }
   .glass-input:focus { border-color: #FFB800; outline: none; }
-
   .glass-nav {
     background: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-
-  /* Botoes */
   .btn-buy { background: linear-gradient(135deg, #FFC933, #CC9200); color: #111; transition: transform .25s ease, box-shadow .25s ease; }
   .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 12px 34px -10px rgba(255, 184, 0, .55); }
   
-  /* Tabela de Specs no Glass */
   .specs-table { width: 100%; border-collapse: collapse; font-size: 14px; }
   .specs-table td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
   .specs-table tr:last-child td { border-bottom: none; }
@@ -83,6 +73,7 @@
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 184, 0, .6); } 70% { box-shadow: 0 0 0 8px rgba(255, 184, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0); } }
 
   .stock-bar-fill { background: linear-gradient(90deg, #FFB800, #FF7A00); }
+  ::selection { background: #FFB800; color: #111; }
 </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative">
@@ -98,7 +89,8 @@
 
   <nav class="w-full z-50 p-5 sticky top-0 glass-nav">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
+      <!-- BOTÃO VOLTAR CORRIGIDO AQUI -->
+      <a href="index.html#produtos" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">
         ← Voltar
       </a>
       <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
@@ -110,8 +102,8 @@
 
   <div class="max-w-6xl mx-auto w-full px-6 py-6 text-xs font-medium text-white/40 tracking-wider uppercase">
     <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
-    <a href="#" class="hover:text-[#FFB800] transition">Agro & Jardim</a> <span class="mx-2">/</span>
-    <a href="#" class="hover:text-[#FFB800] transition">Roçadeiras</a> <span class="mx-2">/</span>
+    <a href="index.html#produtos" class="hover:text-[#FFB800] transition">Agro & Jardim</a> <span class="mx-2">/</span>
+    <a href="index.html#produtos" class="hover:text-[#FFB800] transition">Roçadeiras</a> <span class="mx-2">/</span>
     <span class="text-white/90">FS 120</span>
   </div>
 
