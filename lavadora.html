@@ -36,17 +36,21 @@
   .glass-highlight {
     background: linear-gradient(135deg, rgba(255, 184, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 184, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(255, 184, 0, 0.1);
   }
   .glass-input {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
     color: white;
   }
   .glass-input:focus { border-color: #FFB800; outline: none; }
   .glass-nav {
     background: rgba(10, 10, 10, 0.65);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .btn-buy { background: linear-gradient(135deg, #FFC933, #CC9200); color: #111; transition: transform .25s ease, box-shadow .25s ease; }
@@ -63,6 +67,8 @@
   .thumb.active { border-color: #FFB800; background: rgba(255, 184, 0, 0.1); }
   .pulse-dot { animation: pulse 1.6s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 184, 0, .6); } 70% { box-shadow: 0 0 0 8px rgba(255, 184, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 184, 0, 0); } }
+  .stock-bar-fill { background: linear-gradient(90deg, #FFB800, #FF7A00); }
+  ::selection { background: #FFB800; color: #111; }
 </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col relative">
@@ -77,7 +83,8 @@
 
   <nav class="w-full z-50 p-5 sticky top-0 glass-nav">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">← Voltar</a>
+      <!-- BOTÃO VOLTAR CORRIGIDO AQUI -->
+      <a href="index.html#produtos" class="text-white/60 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors font-medium">← Voltar</a>
       <span class="font-anton tracking-widest text-[17px] text-white/90 uppercase">Araguaia <span class="brand-yellow">Máquinas</span></span>
       <div class="flex items-center gap-4 text-white/60 text-sm font-medium">
         <span class="hidden md:inline hover:text-white cursor-pointer transition">Entrar</span>
@@ -87,8 +94,8 @@
 
   <div class="max-w-6xl mx-auto w-full px-6 py-6 text-xs font-medium text-white/40 tracking-wider uppercase">
     <a href="index.html" class="hover:text-[#FFB800] transition">Início</a> <span class="mx-2">/</span>
-    <a href="#" class="hover:text-[#FFB800] transition">Equipamentos</a> <span class="mx-2">/</span>
-    <a href="#" class="hover:text-[#FFB800] transition">Lavadoras</a> <span class="mx-2">/</span>
+    <a href="index.html#produtos" class="hover:text-[#FFB800] transition">Equipamentos</a> <span class="mx-2">/</span>
+    <a href="index.html#produtos" class="hover:text-[#FFB800] transition">Lavadoras</a> <span class="mx-2">/</span>
     <span class="text-white/90">RE 90 PLUS</span>
   </div>
 
