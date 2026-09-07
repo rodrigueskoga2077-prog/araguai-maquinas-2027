@@ -88,7 +88,7 @@
         .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         .py-32-px-8 { padding: 128px 8%; }
         
-        /* CORREÇÃO DO LAYOUT DAS IMAGENS DOS PRODUTOS */
+        /* CORREÇÃO DO LAYOUT DAS IMAGENS DOS PRODUTOS: TODAS EM 90% */
         .product-img-wrapper {
             display: flex; 
             width: 100%; 
@@ -101,22 +101,14 @@
             background: radial-gradient(circle at center, rgba(255,184,0,0.05), transparent);
         }
         .product-image {
-            width: 70%; 
-            height: 70%; 
+            width: 90%; 
+            height: 90%; 
             object-fit: contain;
             filter: drop-shadow(0px 16px 24px rgba(0, 0, 0, 0.6));
             transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); /* Evita CLS e remove transition:all */
         }
-        .img-lavadora {
-            width: 90%; 
-            height: 90%;
-            transform: scale(1.1);
-        }
         .product-card:hover .product-image {
             transform: scale(1.1);
-        }
-        .product-card:hover .img-lavadora {
-            transform: scale(1.25);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -625,7 +617,7 @@
                 <!-- Lavadora -->
                 <div class="product-card" id="produto-lavadora">
                     <a href="lavadora.html" class="product-img-wrapper">
-                        <img src="./Captura_de_tela_2026-07-20_170705.png_202607201734.webp" alt="Lavadora de Alta Pressão RE 90 PLUS" loading="lazy" decoding="async" width="1200" height="896" class="product-image img-lavadora">
+                        <img src="./Captura_de_tela_2026-07-20_170705.png_202607201734.webp" alt="Lavadora de Alta Pressão RE 90 PLUS" loading="lazy" decoding="async" width="1200" height="896" class="product-image">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
                         <h3 style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.03em;color:#F8F8F8;margin-bottom:8px;">LAVADORA RE 90 PLUS</h3>
@@ -964,7 +956,6 @@
 
     <div class="chat-container" id="chatbot">
         <div class="chat-header">
-            <!-- CORREÇÃO DA IMAGEM E DIMENSÕES DA ATENDENTE -->
             <img src="fernanda.webp" alt="Fernanda" class="chat-avatar" loading="lazy" width="44" height="44" style="object-fit: cover;">
             <div class="chat-header-info">
                 <div class="chat-name">Fernanda</div>
