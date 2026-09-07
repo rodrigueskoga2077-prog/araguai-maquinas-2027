@@ -90,24 +90,33 @@
         
         /* CORREÇÃO DO LAYOUT DAS IMAGENS DOS PRODUTOS */
         .product-img-wrapper {
-            display: flex; width: 100%; aspect-ratio: 1/1; overflow: hidden; flex-shrink: 0; 
-            position: relative; align-items: center; justify-content: center;
+            display: flex; 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            overflow: hidden; 
+            flex-shrink: 0; 
+            position: relative; 
+            align-items: center; 
+            justify-content: center;
             background: radial-gradient(circle at center, rgba(255,184,0,0.05), transparent);
         }
-        .product-img-wrapper img {
-            width: 65%; height: 65%; object-fit: contain;
+        .product-image {
+            width: 70%; 
+            height: 70%; 
+            object-fit: contain;
             filter: drop-shadow(0px 16px 24px rgba(0, 0, 0, 0.6));
-            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); /* CORREÇÃO CLS */
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); /* Evita CLS e remove transition:all */
         }
-        .product-card:hover .product-img-wrapper img {
-            transform: scale(1.08);
+        .img-lavadora {
+            width: 90%; 
+            height: 90%;
+            transform: scale(1.1);
         }
-        /* Ajuste específico para a Lavadora ficar maior */
-        #produto-lavadora .product-img-wrapper img {
-            width: 85%; height: 85%; transform: scale(1.2);
+        .product-card:hover .product-image {
+            transform: scale(1.1);
         }
-        #produto-lavadora.product-card:hover .product-img-wrapper img {
-            transform: scale(1.3);
+        .product-card:hover .img-lavadora {
+            transform: scale(1.25);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -170,15 +179,15 @@
             display: flex; justify-content: space-between; align-items: center;
             background: rgba(255,255,255,0.03); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
             border: 0.5px solid rgba(255,255,255,0.08); padding: 14px 28px; border-radius: 100px;
-            transition: background 0.4s ease, border-color 0.4s ease; /* CORREÇÃO CLS */
+            transition: background-color 0.4s ease, border-color 0.4s ease;
         }
-        nav.scrolled .nav-inner { background: rgba(17,17,17,0.85); border-color: rgba(255,255,255,0.12); }
+        nav.scrolled .nav-inner { background-color: rgba(17,17,17,0.85); border-color: rgba(255,255,255,0.12); }
         .nav-logo { font-family: 'Anton', sans-serif; letter-spacing: 0.15em; font-size: 15px; color: rgba(255,255,255,0.9); }
         .nav-logo span { color: #FFB800; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
         .nav-links a:hover { color: rgba(255,255,255,0.9); }
-        .nav-cta { background: rgba(255,184,0,0.15); border: 0.5px solid rgba(255,184,0,0.35); color: #FFB800 !important; padding: 8px 20px; border-radius: 100px; transition: background-color 0.2s ease, border-color 0.2s ease !important; /* CORREÇÃO CLS */ }
+        .nav-cta { background-color: rgba(255,184,0,0.15); border: 0.5px solid rgba(255,184,0,0.35); color: #FFB800 !important; padding: 8px 20px; border-radius: 100px; transition: background-color 0.2s ease, border-color 0.2s ease !important; }
         .nav-cta:hover { background-color: rgba(255,184,0,0.25) !important; border-color: rgba(255,184,0,0.6) !important; color: #FFB800 !important; }
         .nav-icons { display: flex; gap: 16px; color: rgba(255,255,255,0.6); }
 
@@ -197,14 +206,13 @@
         }
 
         .scroll-dots { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 60; display: flex; flex-direction: column; gap: 24px; pointer-events: none; }
-        /* CORREÇÃO CLS: Removido transition: all */
-        .dot { width: 4px; height: 4px; background: #fff; border-radius: 50%; opacity: 0.15; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease; will-change: transform, opacity; }
+        .dot { width: 4px; height: 4px; background-color: #fff; border-radius: 50%; opacity: 0.15; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease; will-change: transform, opacity; }
         .dot.active { opacity: 1; transform: scale(2.5); background-color: var(--brand-yellow); box-shadow: 0 0 15px var(--brand-yellow); }
 
         .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 30; opacity: 0.6; transition: opacity 0.4s ease; pointer-events: none; }
         .scroll-indicator.hidden { opacity: 0; }
         .mouse-icon { width: 22px; height: 34px; border: 1.5px solid rgba(255,255,255,0.6); border-radius: 12px; position: relative; }
-        .wheel-icon { width: 2px; height: 6px; background: #FFB800; border-radius: 2px; position: absolute; top: 6px; left: 50%; animation: scroll-wheel 1.5s infinite; }
+        .wheel-icon { width: 2px; height: 6px; background-color: #FFB800; border-radius: 2px; position: absolute; top: 6px; left: 50%; animation: scroll-wheel 1.5s infinite; }
         @keyframes scroll-wheel { 0% { transform: translate(-50%, 0); opacity: 1; } 100% { transform: translate(-50%, 12px); opacity: 0; } }
         .scroll-text { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 500; font-family: 'DM Sans', sans-serif; }
 
@@ -236,8 +244,7 @@
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(255,184,0,0.6); }
         .cta-btn:hover::after { left: 100%; }
 
-        /* CORREÇÃO CLS: Removido transition: all */
-        .cta-btn-outline { display: inline-block; background: transparent; color: rgba(255,255,255,0.7); padding: 18px 44px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; border: 0.5px solid rgba(255,255,255,0.4); transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; text-decoration: none; position: relative; overflow: hidden; }
+        .cta-btn-outline { display: inline-block; background-color: transparent; color: rgba(255,255,255,0.7); padding: 18px 44px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; border: 0.5px solid rgba(255,255,255,0.4); transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; text-decoration: none; position: relative; overflow: hidden; }
         .cta-btn-outline:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.6); color: #fff; box-shadow: 0 10px 30px -10px rgba(255,255,255,0.1); }
 
         #produtos { position: relative; z-index: 40; margin-top: -100vh; margin-top: -100svh; padding-top: 15vh; background: linear-gradient(to bottom, transparent, #111111 15vh, #111111 100%); }
@@ -263,15 +270,14 @@
         @keyframes highlight-pulse { 0% { box-shadow: 0 0 40px rgba(255,184,0,0.5); } 100% { box-shadow: 0 0 30px rgba(255,184,0,0.15); } }
 
         .product-badge { position: absolute; top: 16px; left: 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 6px; z-index: 5; }
-        .badge-hot { background: #FFB800; color: #111111; }
-        .badge-pro { background: rgba(255,255,255,0.06); color: #FFB800; border: 0.5px solid rgba(255,184,0,0.35); }
-        .badge-new { background: #F8F8F8; color: #111111; }
+        .badge-hot { background-color: #FFB800; color: #111111; }
+        .badge-pro { background-color: rgba(255,255,255,0.06); color: #FFB800; border: 0.5px solid rgba(255,184,0,0.35); }
+        .badge-new { background-color: #F8F8F8; color: #111111; }
         .product-features { font-size: 12px; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.9; margin-bottom: 20px; border-left: 2px solid rgba(255,184,0,0.2); padding-left: 12px; }
         .product-features li { list-style: none; }
         .product-price-old { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: line-through; margin-bottom: 2px; }
         .product-price-new { font-family: 'Anton', sans-serif; font-size: 30px; letter-spacing: 0.02em; color: #FFB800; margin-bottom: 2px; }
         .product-price-inst { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
-        /* CORREÇÃO CLS: Removido transition: all */
         .product-buy-btn { width: 100%; padding: 14px; border-radius: 12px; background-color: rgba(255,184,0,0.1); border: 0.5px solid rgba(255,184,0,0.35); color: #FFB800; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer; }
         .product-buy-btn:hover { background-color: #FFB800; color: #111111; border-color: #FFB800; }
 
@@ -302,15 +308,14 @@
         .service-item:hover .service-arrow { color: #FFB800; transform: translate3d(4px, -4px, 0); }
 
         .process-container { position: relative; }
-        .process-line-bg { position: absolute; top: 16px; left: 10%; right: 10%; height: 1px; background: rgba(255,255,255,0.15); z-index: 0; }
-        .process-line-fill { position: absolute; top: 16px; left: 10%; width: 0%; height: 1px; background: var(--brand-yellow); z-index: 1; box-shadow: 0 0 15px var(--brand-yellow); will-change: width; transition: width 0.1s linear; }
-        .process-line-v-bg { display: none; position: absolute; top: 16px; bottom: 16px; left: 15px; width: 2px; background: rgba(255,255,255,0.15); z-index: 0; }
-        .process-line-v-fill { display: none; position: absolute; top: 16px; left: 15px; width: 2px; height: 0%; background: var(--brand-yellow); z-index: 1; box-shadow: 0 0 15px var(--brand-yellow); will-change: height; transition: height 0.1s linear; }
+        .process-line-bg { position: absolute; top: 16px; left: 10%; right: 10%; height: 1px; background-color: rgba(255,255,255,0.15); z-index: 0; }
+        .process-line-fill { position: absolute; top: 16px; left: 10%; width: 0%; height: 1px; background-color: var(--brand-yellow); z-index: 1; box-shadow: 0 0 15px var(--brand-yellow); will-change: width; transition: width 0.1s linear; }
+        .process-line-v-bg { display: none; position: absolute; top: 16px; bottom: 16px; left: 15px; width: 2px; background-color: rgba(255,255,255,0.15); z-index: 0; }
+        .process-line-v-fill { display: none; position: absolute; top: 16px; left: 15px; width: 2px; height: 0%; background-color: var(--brand-yellow); z-index: 1; box-shadow: 0 0 15px var(--brand-yellow); will-change: height; transition: height 0.1s linear; }
 
         .process-step { text-align: center; padding: 0 24px; position: relative; z-index: 2; opacity: 0.6; transition: opacity 0.5s ease, transform 0.5s ease; transform: translateY(20px); }
         .process-step.active { opacity: 1; transform: translateY(0); }
 
-        /* CORREÇÃO CLS: Removido transition: all */
         .process-icon-wrap { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background-color: #111111; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.5s ease, box-shadow 0.5s ease; box-shadow: inset 0 0 0 0 rgba(255,184,0,0); }
         .process-dot { width: 8px; height: 8px; border-radius: 50%; background-color: rgba(255,255,255,0.3); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.5s ease, box-shadow 0.5s ease; }
 
@@ -322,7 +327,7 @@
         .process-desc { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.6; transition: color 0.4s ease; }
         .process-step.active .process-desc { color: rgba(255,255,255,0.9); }
 
-        .testimonial-card { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 32px; transition: border-color 0.3s ease; }
+        .testimonial-card { background-color: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 32px; transition: border-color 0.3s ease; }
         .testimonial-card:hover { border-color: rgba(255,184,0,0.35); }
         .testimonial-quote { font-size: clamp(14px, 1.6vw, 16px); color: rgba(255,255,255,0.8); font-weight: 300; line-height: 1.7; margin-bottom: 24px; font-style: italic; }
         .testimonial-author { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
@@ -338,11 +343,11 @@
         @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
         .brand-item { font-family: 'Anton', sans-serif; font-size: 13px; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); white-space: nowrap; transition: color 0.2s ease; }
         .brand-item:hover { color: rgba(255,255,255,0.6); }
-        .brand-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,184,0,0.5); flex-shrink: 0; }
+        .brand-dot { width: 4px; height: 4px; border-radius: 50%; background-color: rgba(255,184,0,0.5); flex-shrink: 0; }
 
         .faq-item { border-top: 0.5px solid rgba(255,255,255,0.07); }
         .faq-item:last-child { border-bottom: 0.5px solid rgba(255,255,255,0.07); }
-        .faq-trigger { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 24px 0; text-align: left; gap: 24px; }
+        .faq-trigger { width: 100%; background-color: transparent; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 24px 0; text-align: left; gap: 24px; }
         .faq-question { font-family: 'DM Sans', sans-serif; font-size: clamp(15px, 1.8vw, 18px); font-weight: 400; color: rgba(255,255,255,0.85); transition: color 0.2s ease; }
         .faq-trigger:hover .faq-question { color: #fff; }
         .faq-icon { width: 24px; height: 24px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.3); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); transition: border-color 0.2s ease, color 0.2s ease, transform 0.3s ease; }
@@ -364,7 +369,6 @@
         .footer-col-title { font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 0.15em; color: #fff; margin-bottom: 20px; }
         .footer-link { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s ease; }
         .footer-link:hover { color: rgba(255,255,255,0.9); }
-        /* CORREÇÃO CLS: Removido transition: all */
         .social-icon { width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease; text-decoration: none; }
         .social-icon:hover { border-color: rgba(255,184,0,0.6); color: #FFB800; background-color: rgba(255,184,0,0.05); transform: translateY(-2px); }
 
@@ -374,7 +378,6 @@
         .yellow-stripe .stripe-sub { color: rgba(17,17,17,0.75); }
         .yellow-stripe .stripe-btn { background-color: #111111; color: #FFB800 !important; }
 
-        /* CORREÇÃO CLS: Removido transition: all */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; z-index: 9999; cursor: pointer;
             background-color: rgba(255, 255, 255, 0.05);
@@ -411,7 +414,6 @@
         .chat-tooltip.hidden { opacity: 0; pointer-events: none; transform: scale(0.9); }
         @keyframes float-tooltip { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
 
-        /* CORREÇÃO CLS: Removido transition: all */
         .chat-container { position: fixed; bottom: 110px; right: 30px; width: 350px; max-height: 500px; height: 60vh; background-color: rgba(17, 17, 17, 0.65); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border: 0.5px solid rgba(255,255,255,0.2); border-radius: 20px; z-index: 9998; display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.95); transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,184,0,0.1); }
         .chat-container.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
 
@@ -424,7 +426,6 @@
         .chat-header-info p { font-size: 11px; color: #FFB800; letter-spacing: 0.05em; margin-top: 1px; display: flex; align-items: center; gap: 5px; }
         .status-dot { width: 6px; height: 6px; background-color: #2a9d6f; border-radius: 50%; box-shadow: 0 0 8px #2a9d6f; }
 
-        /* CORREÇÃO CLS: Removido transition: all */
         .premium-close-btn { width: 28px; height: 28px; border-radius: 50%; background-color: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; flex-shrink: 0; }
         .premium-close-btn:hover { background-color: rgba(255,184,0,0.2); border-color: rgba(255,184,0,0.5); color: #fff; transform: scale(1.05); }
 
@@ -451,7 +452,6 @@
         .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
 
-        /* CORREÇÃO CLS: Removido transition: all */
         .chat-options-container { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; width: 100%; animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(10px); }
         .chat-option-btn { background-color: rgba(255,184,0,0.15); border: 0.5px solid rgba(255,184,0,0.5); color: #FFB800; padding: 12px 16px; border-radius: 12px; font-size: 13px; text-align: left; cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; font-family: 'DM Sans', sans-serif; font-weight: 500; line-height: 1.4; }
         .chat-option-btn:hover { background-color: rgba(255,184,0,0.25); border-color: rgba(255,184,0,0.8); transform: translateX(4px); }
@@ -573,9 +573,8 @@
                 <!-- Motosserra -->
                 <div class="product-card" id="produto-motosserra">
                     <span class="product-badge badge-hot">Campeã de vendas</span>
-                    <!-- CORREÇÃO HTML DAS IMAGENS: Removidas as tags sujas de padding que estavam esmagando as imagens -->
                     <a href="motosserra.html" class="product-img-wrapper">
-                        <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra a Combustão MS 172" loading="lazy" decoding="async">
+                        <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra a Combustão MS 172" loading="lazy" decoding="async" width="896" height="1200" class="product-image">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
                         <h3 style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.03em;color:#F8F8F8;margin-bottom:8px;">MOTOSSERRA MS 172</h3>
@@ -600,9 +599,8 @@
                 <!-- Roçadeira -->
                 <div class="product-card" id="produto-rocadeira">
                     <span class="product-badge badge-pro">Uso profissional</span>
-                    <!-- CORREÇÃO HTML DAS IMAGENS -->
                     <a href="rocadeira.html" class="product-img-wrapper">
-                        <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201341.webp" alt="Roçadeira a Combustão FS 120" loading="lazy" decoding="async">
+                        <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201341.webp" alt="Roçadeira a Combustão FS 120" loading="lazy" decoding="async" width="896" height="1200" class="product-image">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
                         <h3 style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.03em;color:#F8F8F8;margin-bottom:8px;">ROÇADEIRA FS 120</h3>
@@ -626,9 +624,8 @@
 
                 <!-- Lavadora -->
                 <div class="product-card" id="produto-lavadora">
-                    <!-- CORREÇÃO HTML DAS IMAGENS -->
                     <a href="lavadora.html" class="product-img-wrapper">
-                        <img src="./Captura_de_tela_2026-07-20_170705.png_202607201734.webp" alt="Lavadora de Alta Pressão RE 90 PLUS" loading="lazy" decoding="async">
+                        <img src="./Captura_de_tela_2026-07-20_170705.png_202607201734.webp" alt="Lavadora de Alta Pressão RE 90 PLUS" loading="lazy" decoding="async" width="1200" height="896" class="product-image img-lavadora">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
                         <h3 style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.03em;color:#F8F8F8;margin-bottom:8px;">LAVADORA RE 90 PLUS</h3>
@@ -653,9 +650,8 @@
                 <!-- Soprador -->
                 <div class="product-card" id="produto-soprador">
                     <span class="product-badge badge-new">Inovação a bateria</span>
-                    <!-- CORREÇÃO HTML DAS IMAGENS -->
                     <a href="soprador.html" class="product-img-wrapper">
-                        <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201407.webp" alt="Soprador a combustão BG 50" loading="lazy" decoding="async">
+                        <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201407.webp" alt="Soprador a combustão BG 50" loading="lazy" decoding="async" width="896" height="1200" class="product-image">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
                         <h3 style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:0.03em;color:#F8F8F8;margin-bottom:8px;">SOPRADOR BG 50</h3>
