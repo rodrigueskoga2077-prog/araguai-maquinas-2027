@@ -67,12 +67,14 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Araguaia Máquinas">
 
+    <!-- Fontes do Google (Otimizadas para não bloquear a renderização) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
-    <!-- Adicionado defer para não bloquear a renderização -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" defer></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+    </noscript>
 
     <style>
         :root {
@@ -81,6 +83,20 @@
             --brand-dark: #111111;
             --fill-width: 0%;
         }
+
+        /* Classes de Alta Performance (Substitutas do Tailwind CSS) */
+        .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .py-32-px-8 { padding: 128px 8%; }
+        .product-img-wrapper {
+            display: flex; width: 100%; aspect-ratio: 1/1; overflow: hidden; flex-shrink: 0; 
+            position: relative; align-items: center; justify-content: center;
+            background: radial-gradient(circle at center, rgba(255,184,0,0.05), transparent);
+        }
+        .p-24 { padding: 96px; }
+        .p-10 { padding: 40px; }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .object-contain { object-fit: contain; }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -133,7 +149,6 @@
             transition: opacity 0.6s ease;
         }
         #loader-bar-track { width: 160px; height: 1px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden; }
-        /* Otimizado para não causar Reflow de Layout (CLS) animando via transform */
         #loader-bar { position: absolute; left: 0; top: 0; height: 100%; background: #FFB800; width: 100%; transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; }
         #loader-pct { font-family: 'Anton', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); }
 
@@ -170,13 +185,13 @@
         }
 
         .scroll-dots { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 60; display: flex; flex-direction: column; gap: 24px; pointer-events: none; }
-        .dot { width: 4px; height: 4px; background: #fff; border-radius: 50%; opacity: 0.15; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+        /* CORREÇÃO CLS: transition all removido */
+        .dot { width: 4px; height: 4px; background: #fff; border-radius: 50%; opacity: 0.15; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease; will-change: transform, opacity; }
         .dot.active { opacity: 1; transform: scale(2.5); background: var(--brand-yellow); box-shadow: 0 0 15px var(--brand-yellow); }
 
         .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 30; opacity: 0.6; transition: opacity 0.4s ease; pointer-events: none; }
         .scroll-indicator.hidden { opacity: 0; }
         .mouse-icon { width: 22px; height: 34px; border: 1.5px solid rgba(255,255,255,0.6); border-radius: 12px; position: relative; }
-        /* Animação alterada para translate ao invés de margin/top para zerar CLS */
         .wheel-icon { width: 2px; height: 6px; background: #FFB800; border-radius: 2px; position: absolute; top: 6px; left: 50%; animation: scroll-wheel 1.5s infinite; }
         @keyframes scroll-wheel { 0% { transform: translate(-50%, 0); opacity: 1; } 100% { transform: translate(-50%, 12px); opacity: 0; } }
         .scroll-text { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 500; font-family: 'DM Sans', sans-serif; }
@@ -209,7 +224,8 @@
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(255,184,0,0.6); }
         .cta-btn:hover::after { left: 100%; }
 
-        .cta-btn-outline { display: inline-block; background: transparent; color: rgba(255,255,255,0.7); padding: 18px 44px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; border: 0.5px solid rgba(255,255,255,0.4); transition: all 0.3s ease; text-decoration: none; position: relative; overflow: hidden; }
+        /* CORREÇÃO CLS: transition all removido */
+        .cta-btn-outline { display: inline-block; background: transparent; color: rgba(255,255,255,0.7); padding: 18px 44px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; cursor: pointer; border: 0.5px solid rgba(255,255,255,0.4); transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; text-decoration: none; position: relative; overflow: hidden; }
         .cta-btn-outline:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.6); color: #fff; box-shadow: 0 10px 30px -10px rgba(255,255,255,0.1); }
 
         #produtos { position: relative; z-index: 40; margin-top: -100vh; margin-top: -100svh; padding-top: 15vh; background: linear-gradient(to bottom, transparent, #111111 15vh, #111111 100%); }
@@ -245,7 +261,8 @@
         .product-price-old { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: line-through; margin-bottom: 2px; }
         .product-price-new { font-family: 'Anton', sans-serif; font-size: 30px; letter-spacing: 0.02em; color: #FFB800; margin-bottom: 2px; }
         .product-price-inst { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
-        .product-buy-btn { width: 100%; padding: 14px; border-radius: 12px; background: rgba(255,184,0,0.1); border: 0.5px solid rgba(255,184,0,0.35); color: #FFB800; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; cursor: pointer; }
+        /* CORREÇÃO CLS: transition all removido */
+        .product-buy-btn { width: 100%; padding: 14px; border-radius: 12px; background: rgba(255,184,0,0.1); border: 0.5px solid rgba(255,184,0,0.35); color: #FFB800; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer; }
         .product-buy-btn:hover { background: #FFB800; color: #111111; border-color: #FFB800; }
 
         .section-label { font-size: 10px; letter-spacing: 0.5em; color: #FFB800; text-transform: uppercase; font-weight: 500; display: block; margin-bottom: 16px; }
@@ -283,8 +300,9 @@
         .process-step { text-align: center; padding: 0 24px; position: relative; z-index: 2; opacity: 0.6; transition: opacity 0.5s ease, transform 0.5s ease; transform: translateY(20px); }
         .process-step.active { opacity: 1; transform: translateY(0); }
 
-        .process-icon-wrap { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: #111111; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: all 0.5s cubic-bezier(0.16,1,0.3,1); box-shadow: inset 0 0 0 0 rgba(255,184,0,0); }
-        .process-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+        /* CORREÇÃO CLS: transition all removido */
+        .process-icon-wrap { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: #111111; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.5s ease, box-shadow 0.5s ease; box-shadow: inset 0 0 0 0 rgba(255,184,0,0); }
+        .process-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), background-color 0.5s ease, box-shadow 0.5s ease; }
 
         .process-step.active .process-icon-wrap { border-color: var(--brand-yellow); transform: scale(1.15); box-shadow: inset 0 0 20px rgba(255,184,0,0.2), 0 0 20px rgba(255,184,0,0.3); }
         .process-step.active .process-dot { background: var(--brand-yellow); transform: scale(1.3); box-shadow: 0 0 10px var(--brand-yellow); }
@@ -336,7 +354,8 @@
         .footer-col-title { font-family: 'Anton', sans-serif; font-size: 14px; letter-spacing: 0.15em; color: #fff; margin-bottom: 20px; }
         .footer-link { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.2s ease; }
         .footer-link:hover { color: rgba(255,255,255,0.9); }
-        .social-icon { width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); transition: all 0.2s ease; text-decoration: none; }
+        /* CORREÇÃO CLS: transition all removido */
+        .social-icon { width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease; text-decoration: none; }
         .social-icon:hover { border-color: rgba(255,184,0,0.6); color: #FFB800; background: rgba(255,184,0,0.05); transform: translateY(-2px); }
 
         .visible { opacity: 1 !important; pointer-events: all !important; }
@@ -345,6 +364,7 @@
         .yellow-stripe .stripe-sub { color: rgba(17,17,17,0.75); }
         .yellow-stripe .stripe-btn { background: #111111; color: #FFB800 !important; }
 
+        /* CORREÇÃO CLS: transition all removido */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; z-index: 9999; cursor: pointer;
             background: rgba(255, 255, 255, 0.05);
@@ -353,7 +373,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            animation: float-icon 4s ease-in-out infinite; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: float-icon 4s ease-in-out infinite; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
         }
         .whatsapp-float::before {
             content: ''; position: absolute; inset: 0; border-radius: 50%;
@@ -381,7 +401,8 @@
         .chat-tooltip.hidden { opacity: 0; pointer-events: none; transform: scale(0.9); }
         @keyframes float-tooltip { 0% { transform: translateY(0); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0); } }
 
-        .chat-container { position: fixed; bottom: 110px; right: 30px; width: 350px; max-height: 500px; height: 60vh; background: rgba(17, 17, 17, 0.65); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border: 0.5px solid rgba(255,255,255,0.2); border-radius: 20px; z-index: 9998; display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.95); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,184,0,0.1); }
+        /* CORREÇÃO CLS: transition all removido */
+        .chat-container { position: fixed; bottom: 110px; right: 30px; width: 350px; max-height: 500px; height: 60vh; background: rgba(17, 17, 17, 0.65); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border: 0.5px solid rgba(255,255,255,0.2); border-radius: 20px; z-index: 9998; display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(20px) scale(0.95); transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,184,0,0.1); }
         .chat-container.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
 
         .chat-header { padding: 14px 20px; border-bottom: 0.5px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); gap: 12px; }
@@ -393,10 +414,11 @@
         .chat-header-info p { font-size: 11px; color: #FFB800; letter-spacing: 0.05em; margin-top: 1px; display: flex; align-items: center; gap: 5px; }
         .status-dot { width: 6px; height: 6px; background: #2a9d6f; border-radius: 50%; box-shadow: 0 0 8px #2a9d6f; }
 
-        .premium-close-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; }
+        /* CORREÇÃO CLS: transition all removido */
+        .premium-close-btn { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; flex-shrink: 0; }
         .premium-close-btn:hover { background: rgba(255,184,0,0.2); border-color: rgba(255,184,0,0.5); color: #fff; transform: scale(1.05); }
 
-        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+        .chat-messages { flex: 1; padding: 20px; overflow:y: auto; display: flex; flex-direction: column; gap: 16px; }
         .chat-messages::-webkit-scrollbar { width: 4px; }
         .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
@@ -419,8 +441,9 @@
         .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
         @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
 
+        /* CORREÇÃO CLS: transition all removido */
         .chat-options-container { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; width: 100%; animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(10px); }
-        .chat-option-btn { background: rgba(255,184,0,0.15); border: 0.5px solid rgba(255,184,0,0.5); color: #FFB800; padding: 12px 16px; border-radius: 12px; font-size: 13px; text-align: left; cursor: pointer; transition: all 0.2s ease; font-family: 'DM Sans', sans-serif; font-weight: 500; line-height: 1.4; }
+        .chat-option-btn { background: rgba(255,184,0,0.15); border: 0.5px solid rgba(255,184,0,0.5); color: #FFB800; padding: 12px 16px; border-radius: 12px; font-size: 13px; text-align: left; cursor: pointer; transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; font-family: 'DM Sans', sans-serif; font-weight: 500; line-height: 1.4; }
         .chat-option-btn:hover { background: rgba(255,184,0,0.25); border-color: rgba(255,184,0,0.8); transform: translateX(4px); }
 
         @media (max-width: 768px) {
@@ -526,7 +549,7 @@
         </div>
     </section>
 
-    <section id="produtos" class="py-32 px-[8%]">
+    <section id="produtos" class="py-32-px-8">
         <div style="max-width:1200px;margin:0 auto;">
             <div style="text-align:center;margin-bottom:80px;">
                 <span class="section-label reveal">Catálogo oficial</span>
@@ -540,7 +563,7 @@
                 <!-- Motosserra -->
                 <div class="product-card" id="produto-motosserra">
                     <span class="product-badge badge-hot">Campeã de vendas</span>
-                    <a href="motosserra.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-24">
+                    <a href="motosserra.html" class="product-img-wrapper p-24">
                         <img src="Motosserra a combustão MS 172/Motosserra_a_combustão_MS_172.png_202607201330.webp" alt="Motosserra a Combustão MS 172" width="896" height="1200" loading="lazy" decoding="async" class="product-image w-full h-full object-contain">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
@@ -566,7 +589,7 @@
                 <!-- Roçadeira -->
                 <div class="product-card" id="produto-rocadeira">
                     <span class="product-badge badge-pro">Uso profissional</span>
-                    <a href="rocadeira.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-24">
+                    <a href="rocadeira.html" class="product-img-wrapper p-24">
                         <img src="Roçadeira a combustão FS 120/Roçadeira_a_combustão_FS_120.png_202607201341.webp" alt="Roçadeira a Combustão FS 120" width="896" height="1200" loading="lazy" decoding="async" class="product-image w-full h-full object-contain">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
@@ -591,8 +614,8 @@
 
                 <!-- Lavadora -->
                 <div class="product-card" id="produto-lavadora">
-                    <a href="lavadora.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-10">
-                        <div class="w-full h-full flex items-center justify-center" style="transform: scale(1.35);">
+                    <a href="lavadora.html" class="product-img-wrapper p-10">
+                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transform: scale(1.35);">
                             <img src="./Captura_de_tela_2026-07-20_170705.png_202607201734.webp" alt="Lavadora de Alta Pressão RE 90 PLUS" width="1200" height="896" loading="lazy" decoding="async" class="product-image w-full h-full object-contain">
                         </div>
                     </a>
@@ -619,7 +642,7 @@
                 <!-- Soprador -->
                 <div class="product-card" id="produto-soprador">
                     <span class="product-badge badge-new">Inovação a bateria</span>
-                    <a href="soprador.html" class="block w-full aspect-square overflow-hidden flex-shrink-0 relative bg-radial-[circle_at_center] from-[#FFB800]/5 to-transparent flex items-center justify-center p-24">
+                    <a href="soprador.html" class="product-img-wrapper p-24">
                         <img src="Soprador a combustão BG 50/Soprador_a_combustão_BG_50.png_202607201407.webp" alt="Soprador a combustão BG 50" width="896" height="1200" loading="lazy" decoding="async" class="product-image w-full h-full object-contain">
                     </a>
                     <div style="padding:28px;display:flex;flex-direction:column;flex-grow:1;">
@@ -933,7 +956,7 @@
 
     <div class="chat-container" id="chatbot">
         <div class="chat-header">
-            <img src="fernanda.jpg" alt="Fernanda" class="chat-avatar" style="object-fit: cover;">
+            <img src="fernanda.webp" alt="Fernanda" class="chat-avatar" loading="lazy" width="44" height="44" style="object-fit: cover;">
             <div class="chat-header-info">
                 <div class="chat-name">Fernanda</div>
                 <p><span class="status-dot"></span> Especialista Araguaia Máquinas</p>
@@ -1101,7 +1124,7 @@
                 const processSection = document.getElementById('como-comprar');
                 if (processSection) {
                     const rect = processSection.getBoundingClientRect();
-                    const viewH = window.innerHeight;
+                    const viewH = cH;
                     const startY = viewH * 0.8;
                     let rawProgress = (startY - rect.top) / (rect.height * 0.8);
                     rawProgress = Math.max(0, Math.min(1, rawProgress));
@@ -1178,6 +1201,15 @@
             async function worker() {
                 while (queue.length) {
                     const i   = queue.shift();
+                    
+                    if (IS_MOBILE && i > 0) {
+                        loaded++;
+                        const pct = Math.round((loaded / FRAME_COUNT) * 100);
+                        loaderBar.style.transform = 'scaleX(' + (loaded / FRAME_COUNT) + ')';
+                        loaderPct.textContent = pct + '%';
+                        continue;
+                    }
+
                     const url = `${BASE_URL}${String(i + 1).padStart(4, '0')}.webp`;
                     try {
                         const res  = await fetch(url);
@@ -1190,9 +1222,9 @@
                         
                         bitmaps[i] = await createImageBitmap(blob, bmpOpts);
                     } catch(e) {}
+                    
                     loaded++;
                     const pct = Math.round((loaded / FRAME_COUNT) * 100);
-                    // Usando transform para evitar Reflow no Layout
                     loaderBar.style.transform = 'scaleX(' + (loaded / FRAME_COUNT) + ')';
                     loaderPct.textContent = pct + '%';
                 }
@@ -1328,7 +1360,6 @@
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(payload)
         }).then(() => {
-            // EVENTO PARA O GOOGLE TAG MANAGER (LEAD FORMULÁRIO)
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({'event': 'lead_formulario'});
 
@@ -1530,7 +1561,6 @@
                 const msgFinal = encodeURIComponent(`Olá, Araguaia Máquinas! Sou ${leadData.nome}, de ${leadData.cidade}. Tenho interesse em ${leadData.interesse} (${leadData.detalhe}). Aguardo retorno.`);
 
                 setTimeout(() => {
-                    // EVENTO PARA O GOOGLE TAG MANAGER (LEAD CHAT)
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({'event': 'lead_chat'});
 
